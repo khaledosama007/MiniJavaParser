@@ -1,5 +1,10 @@
 package symbols;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import class_declaration.ClassDeclaration;
@@ -40,9 +45,53 @@ import type.Type1;
 import var_declaration.VarDeclaration;
 import var_declaration.VarDeclaration1;
 
+
+
 public class Main {
 
-	public static void main(String[] args) {
+    public static ArrayList<Token> readFromFile(String fileName) throws IOException {
+		FileInputStream inputFile = null;
+		BufferedReader bufferReader = null;
+		ArrayList<Token> inputArrayList=new ArrayList<>();
+
+		String line = null;
+		try {
+			inputFile = new FileInputStream(fileName);
+			bufferReader = new BufferedReader(new InputStreamReader(inputFile));
+			line = bufferReader.readLine();
+			while (line != null) {
+				if(line.contains("EOL"))
+				{
+					inputArrayList.add(new Token("EOL", "\n"));
+					line = bufferReader.readLine();
+					line = bufferReader.readLine();
+				}
+				if(line.contains("< ")){
+				String [] splitString =line.split(" > : -");
+				String type = splitString[0].replace("< ", "");
+				String value = splitString[1].replace("-", "");
+				inputArrayList.add(new Token(type, value));
+				}
+				line = bufferReader.readLine();
+			}
+
+		} finally {
+			if (line == null) {
+				bufferReader.close();
+				inputFile.close();
+			}
+		}
+            return inputArrayList;
+	}
+	public static void main(String[] args) throws IOException {
+		
+		ArrayList<Token> inputArrayList = readFromFile("Lex_test_4_ans.txt");
+		for (int i=0 ;i<inputArrayList.size();i++)
+		{
+			System.out.println(inputArrayList.get(i).type + " = " + inputArrayList.get(i).value );
+		}
+
+
 		/*Expression[] arr = new Expression[1];
 		// TODO Auto-generated method stub
 		Expression_Alpha lamda = new Expression_Alpha4();
@@ -84,6 +133,7 @@ public class Main {
 		Goal g = new GoalStart(mc,cd , new EOF());
 		
 		System.out.println(g.getValue());*/
+		/*
 		ArrayList<Token> q=new ArrayList<>();
 		TokenQueue t = new TokenQueue();
 		//test case
@@ -110,8 +160,8 @@ public class Main {
 		
 		t.queue = q;
 		Parser p = new Parser();
-		Goal g = p.parse();
-		System.out.println(g.getValue());
+		//Goal g = p.parse();
+		//System.out.println(g.getValue());*/
 		
 	}
 	
