@@ -41,13 +41,9 @@ public class Token {
 	public static final String NEW = "NEW";
 	public static final String FLOAT = "FLOAT";
 	public static final String CHARACHTER = "CHARACHTER";
-	
-	
-	
 	public static final String INTEGER = "INT";
 
 
-	
 	
 	public Token(String type , String value){
 		this.type = type;
