@@ -2,6 +2,10 @@ package symbols;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import class_declaration.ClassDeclaration;
 import class_declaration.ClassDeclaration1;
 import declaration.Declaration;
@@ -100,17 +104,44 @@ public class Main {
 		q.add(new Token("LEFT_SQUARE_B" , "["));
 		q.add(new Token("RIGHT_SQUARE_B" , "]"));
 		q.add(new Token("IDENTIFIER" , "a"));
-		q.add(new Token("LEFT_ROUND_B" , ")"));
+		q.add(new Token("RIGHT_ROUND_B" , ")"));
 		q.add(new Token("LEFT_CURLY_B" , "{"));
-		q.add(new Token("INT" , "int"));
-		q.add(new Token("IDENTIFIER" , "x"));
-		q.add(new Token("SEMICOLON" , ";"));
+		//q.add(new Token("INT" , "int"));
+		//q.add(new Token("IDENTIFIER" , "x"));
+		//q.add(new Token("SEMICOLON" , ";"));
 		q.add(new Token("RIGHT_CURLY_B" , "}"));
 		q.add(new Token("RIGHT_CURLY_B" , "}"));
 		
+		q.add(new Token("CLASS" , "class"));
+		q.add(new Token("IDENTIFIER" , "MyC"));
+		q.add(new Token("EXTENDS" , "extends"));
+		q.add(new Token("IDENTIFIER" , "MyCC"));
+		q.add(new Token("LEFT_CURLY_B" , "{"));
+//		q.add(new Token("PUBLIC" , "public"));
+//		q.add(new Token("INT" , "int"));
+//		q.add(new Token("IDENTIFIER" , "ComputeFac"));
+//		q.add(new Token("LEFT_ROUND_B" , "("));
+//		q.add(new Token("STRING" , "String"));
+//		q.add(new Token("IDENTIFIER" , "x"));
+//		q.add(new Token("RIGHT_ROUND_B" , ")"));
+//		q.add(new Token("LEFT_CURLY_B" , "{"));
+		q.add(new Token("INT" , "int"));
+		q.add(new Token("LEFT_SQUARE_B" , "["));
+		q.add(new Token("RIGHT_SQUARE_B" , "]"));
+		q.add(new Token("IDENTIFIER" , "x"));
+		q.add(new Token("SEMICOLON" , ";"));
+		q.add(new Token("RIGHT_CURLY_B" , "}"));
+		//q.add(new Token("RETURN" , "return"));
 		t.queue = q;
 		Parser p = new Parser();
 		Goal g = p.parse();
+//		DefaultMutableTreeNode root = new DefaultMutableTreeNode("ROOT");
+//		JTree tree = new JTree(root);
+//		//tree.add(root);
+//		JFrame frame = new JFrame("Tree");
+//		frame.add(tree);
+//		frame.setVisible(true);
+		
 		System.out.println(g.getValue());
 		
 	}

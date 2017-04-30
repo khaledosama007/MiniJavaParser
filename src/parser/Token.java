@@ -14,7 +14,8 @@ public class Token {
 	public static final String VOID  = "VOID";
 	public static final String MAIN  = "MAIN";
 	public static final String LEFT_ROUND_B  = "LEFT_ROUND_B";
-	public static final String STRING  = "STRING ";
+	public static final String  RIGHT_ROUND_B  = "RIGHT_ROUND_B";
+	public static final String STRING  = "STRING";
 	public static final String LEFT_SQUARE_B  = "LEFT_SQUARE_B";
 	public static final String  RIGHT_SQUARE_B = "RIGHT_SQUARE_B";
 	public static final String IF= "IF";
@@ -44,7 +45,7 @@ public class Token {
 	
 	
 	public static final String INTEGER = "INT";
-	public static final String  RIGHT_ROUND_B  = "RIGHT_ROUND_B";
+
 
 	
 	

@@ -33,6 +33,7 @@ public class Declaration2 implements Declaration {
 	@Override
 	public Declaration parse() {
 		// TODO Auto-generated method stub
+	
 		Declaration2 dec2 = new Declaration2();
 		MethodDeclaration method = new MethodDeclaration1();
 		method = method.parse();

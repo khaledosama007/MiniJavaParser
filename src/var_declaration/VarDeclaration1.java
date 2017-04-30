@@ -36,15 +36,31 @@ public class VarDeclaration1 implements VarDeclaration {
 	}
 
 	@Override
-	public VarDeclaration parse() {
+	public VarDeclaration1 parse() {
 		VarDeclaration1 var = new VarDeclaration1();
 		Type type = TypeSelector.select();
-		Token idToken = TokenQueue.queue.get(TokenQueue.index);
+		type = type.parse();
+		Token idToken = TokenQueue.getToken();
 		if(idToken.type.equals(Token.IDENTIFIER)){
+			
 			var.id =idToken.value; 
+			var.type = type;
+			idToken = TokenQueue.getToken();
+			if(idToken.type.equals(Token.SEMICOLON)){
+				return var;
+			}
+			else {
+				System.out.println("Error : expected "+Token.IDENTIFIER+" Type");
+				return null;
+			}
+			
 		}
-		var.type = type;
-		return var;
+		else {
+			System.out.println("Error : expected "+Token.IDENTIFIER+" Type");
+			return null;
+		}
+		
+		
 	}
 
 }

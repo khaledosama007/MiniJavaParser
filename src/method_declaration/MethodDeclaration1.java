@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 import expression.Expression;
 import parameters.Parameter;
+import parameters.Parameters1;
 import parser.Token;
 import parser.TokenQueue;
 import statement.Statement;
+import symbols.RegularType;
 import type.Type;
 import type.TypeSelector;
 import var_declaration.VarDeclaration;
+import var_declaration.VarDeclaration1;
 
 public class MethodDeclaration1 implements MethodDeclaration {
 
@@ -20,7 +23,7 @@ public class MethodDeclaration1 implements MethodDeclaration {
 	Type type;
 	String id;
 	final String leftB = "(";
-	Parameter parameter;
+	Parameter parameter ;
 
 	final String rightB = ")";
 	final String leftC = "{";
@@ -89,19 +92,102 @@ public class MethodDeclaration1 implements MethodDeclaration {
 		else {
 			methodDeclaration1.access = methodDeclaration1.PRIVATE;
 		}
-		//TokenQueue.index++;
-		//token = TokenQueue.queue.get(TokenQueue.index);
-		Type type = TypeSelector.select();
-		methodDeclaration1.type =type;
 		TokenQueue.index++;
 		token = TokenQueue.queue.get(TokenQueue.index);
-		if(token.type.equals(Token.IDENTIFIER)){
-			methodDeclaration1.id = token.value;
-			TokenQueue.index++;
+		if(RegularType.isRegular(token.value) || token.type.equals(Token.LEFT_SQUARE_B)){
+			Type type = TypeSelector.select();
+			type=type.parse();
+			//TokenQueue.index++;
 			token = TokenQueue.queue.get(TokenQueue.index);
-			
+			if(token.type.equals(Token.IDENTIFIER)){
+				id = token.value;
+				TokenQueue.index++;
+				token = TokenQueue.queue.get(TokenQueue.index);
+				if(token.type.equals(Token.LEFT_ROUND_B)){
+					TokenQueue.index++;
+					token = TokenQueue.queue.get(TokenQueue.index);
+					while(RegularType.isRegular(token.value)){
+						Parameters1 p = new Parameters1();
+						p = p.parse();
+						params.add(p);
+						TokenQueue.index++;
+					}
+					if(token.type.equals(Token.RIGHT_ROUND_B)){
+						TokenQueue.index++;
+						token = TokenQueue.queue.get(TokenQueue.index);
+						if(token.type.equals(Token.LEFT_CURLY_B)){
+							TokenQueue.index++;
+							token = TokenQueue.queue.get(TokenQueue.index);
+							while(RegularType.isRegular(token.value)){
+								VarDeclaration1 vard1 = new VarDeclaration1();
+								vard1 = vard1.parse();
+								methodDeclaration1.varDeclaration.add(vard1);
+							}
+							token = TokenQueue.queue.get(TokenQueue.index);
+							while(token.type.equals(Token.LEFT_CURLY_B) ||token.type.equals(Token.IF)
+						|| token.type.equals(Token.WHILE) || token.type.equals(Token.SOP) 
+						|| token.type.equals(Token.IDENTIFIER)){
+								//Statement Calls
+								//Statement st = 
+							}
+							token = TokenQueue.queue.get(TokenQueue.index);
+							if(token.type.equals(Token.RETURN)){
+								/////Expression exp
+								token = TokenQueue.queue.get(TokenQueue.index);
+								if(token.type.equals(Token.SEMICOLON)){
+									TokenQueue.index++;
+									token = TokenQueue.queue.get(TokenQueue.index);
+									if(token.type.equals(Token.LEFT_CURLY_B)){
+										return methodDeclaration1;}
+									else {
+										System.out.println("Expected "+token.type+" Type");
+										return null;
+									}
+								}
+								else {
+									System.out.println("Expected "+token.type+" Type");
+									return null;
+								}
+							}
+							else {
+								System.out.println("Expected "+token.type+" Type");
+								return null;
+							}
+						}
+						else {
+							System.out.println("Expected "+token.type+" Type");
+							return null;
+						}
+					}else {
+						System.out.println("Expected "+token.type+" Type");
+						return null;
+					}
+				}
+				else {
+					System.out.println("Expected "+token.type+" Type");
+					return null;
+				}
+			}
+			else {
+				System.out.println("Expected "+token.type+" Type");
+				return null;
+			}
 		}
-		return null;
+		else {
+			System.out.println("Expected "+token.type+" Type");
+			return null;
+		}
+		
+//		methodDeclaration1.type =type;
+//		TokenQueue.index++;
+//		token = TokenQueue.queue.get(TokenQueue.index);
+//		if(token.type.equals(Token.IDENTIFIER)){
+//			methodDeclaration1.id = token.value;
+//			TokenQueue.index++;
+//			token = TokenQueue.queue.get(TokenQueue.index);
+//			
+//		}
+//		return null;
 	}
 
 }
