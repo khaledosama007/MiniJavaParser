@@ -14,6 +14,10 @@ public class Identifier_Statement2 implements Identifier_Statement {
 		this.exp2 = exp2;
 	}
 
+	public Identifier_Statement2() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String getValue() {
 		// TODO Auto-generated method stub
@@ -24,6 +28,12 @@ public class Identifier_Statement2 implements Identifier_Statement {
 		result += " ; ";
 
 		return result;
+	}
+
+	@Override
+	public Identifier_Statement parse() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

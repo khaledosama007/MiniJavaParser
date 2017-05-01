@@ -1,23 +1,22 @@
 package statement;
 
 import parser.Token;
+import parser.TokenQueue;
 
 public class RuleSelector {
-	public static Statement select(Token t){
-		if(t.value.equals(t.LEFT_CURLY_B)){
+	public static Statement select() {
+
+		if (TokenQueue.top().equals(Token.LEFT_CURLY_B)) {
 			return new Statement1();
-		}
-		else if (t.value.equals(t.IF)){
+		} else if (TokenQueue.top().equals(Token.IF)) {
 			return new Statement2();
-		}
-		else if (t.value.equals(t.WHILE)){
+		} else if (TokenQueue.top().equals(Token.WHILE)) {
 			return new Statement3();
-		}
-		else if(t.value.equals(t.SOP)){
+		} else if (TokenQueue.top().equals(Token.SOP)) {
 			return new Statement4();
-		}
-		else 
+		} else {
 			return new Statement5();
-		
+		}
+
 	}
 }
