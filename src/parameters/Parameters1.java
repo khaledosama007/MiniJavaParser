@@ -13,8 +13,8 @@ import type.TypeSelector;
 
 public class Parameters1 implements Parameter {
 
-	ArrayList<Type> type;
-	ArrayList<String> id ;
+	public ArrayList<Type> type;
+	public ArrayList<String> id ;
 	//( "," Type identifier )*
 	
 	@Override

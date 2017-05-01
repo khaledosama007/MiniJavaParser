@@ -13,15 +13,15 @@ import symbols.RegularType;
 
 public class ClassDeclaration1 implements ClassDeclaration {
 	// region ss
-	final String classString = "class";
+	final public String classString = "class";
 	public String id1;
 	public String extendsString = "extends";
 	public String id2;
-	final String leftC = "{";
+	final public String leftC = "{";
 	// endregion ss
 	public ArrayList<Declaration> declartion;
 	// (Declaration)*
-	final String rightC = "}";
+	final public String rightC = "}";
 
 	public ClassDeclaration1(String id1, String id2, ArrayList<Declaration> declartion) {
 		super();

@@ -19,25 +19,25 @@ import var_declaration.VarDeclaration1;
 
 public class MethodDeclaration1 implements MethodDeclaration {
 
-	final String PUBLIC = "public";
-	final String PRIVATE = "private";
+	final public String PUBLIC = "public";
+	final public String PRIVATE = "private";
 	// (public | private )
-	String access;
-	Type type;
-	String id;
-	final String leftB = "(";
-	Parameter parameter;
+	public String access;
+	public Type type;
+	public String id;
+	final public String leftB = "(";
+	public Parameter parameter;
 
-	final String rightB = ")";
-	final String leftC = "{";
-	ArrayList<VarDeclaration> varDeclaration;
-	ArrayList<Statement> stmt;
+	final public String rightB = ")";
+	final public String leftC = "{";
+	public ArrayList<VarDeclaration> varDeclaration;
+	public ArrayList<Statement> stmt;
 	// ( VarDeclaration )*
 	// ( Statement )*
-	final String RETURN = "return";
-	Expression exp;
-	final String semicolon = ";";
-	final String leftB2 = "}";
+	final public String RETURN = "return";
+	public Expression exp;
+	final public String semicolon = ";";
+	final public String leftB2 = "}";
 
 	public MethodDeclaration1(String access, Type type, String id, Parameter parameter,
 			ArrayList<VarDeclaration> varDeclaration, ArrayList<Statement> stmt, Expression exp) {

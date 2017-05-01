@@ -193,7 +193,8 @@ public class Main {
 //		frame.add(tree);
 //		frame.setVisible(true);
 		TreeNodeVisitor visitor = new TreeNodeVisitor();
-		visitor.visit(g);
+		//visitor.visit(g);
+		g.accept(visitor);
 		visitor.showTree();
 		//System.out.println(g.getValue());
 		//Goal g = p.parse();

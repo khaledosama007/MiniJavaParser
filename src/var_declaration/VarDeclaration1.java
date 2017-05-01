@@ -13,7 +13,7 @@ public class VarDeclaration1 implements VarDeclaration {
 
 	public Type type;
 	public String id;
-	final String semicolon = ";";
+	final public String semicolon = ";";
 	
 	public VarDeclaration1(Type type, String id) {
 		super();

@@ -8,7 +8,7 @@ import var_declaration.VarDeclaration1;
 
 public class Declaration1 implements Declaration {
 
-	VarDeclaration varDeclaration;
+	public VarDeclaration varDeclaration;
 	@Override
 	public String getValue() {
 		// TODO Auto-generated method stub

@@ -8,7 +8,7 @@ import gui_module.Visitor;
 import parser.TokenQueue;
 
 public class Type2 implements Type {
-	ArrayType arrayType;
+	public ArrayType arrayType;
 	@Override
 	public void print() {
 		// TODO Auto-generated method stub

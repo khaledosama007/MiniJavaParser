@@ -9,7 +9,7 @@ import symbols.RegularType;
 
 public class Type1 implements Type {
 
-	String regularType;
+	public String regularType;
 	
 	public Type1(String regularType) {
 		super();
