@@ -2,21 +2,25 @@ package type;
 
 import parser.Token;
 import parser.TokenQueue;
+import symbols.RegularType;
 
 public class TypeSelector {
 	
 	public static Type select(){
-		Token t1 = TokenQueue.queue.get(TokenQueue.index);
-		TokenQueue.index++;
-	if(TokenQueue.queue.get(TokenQueue.index).equals(Token.LEFT_SQUARE_B)){
-		//one for "[" and one for "]"
-		TokenQueue.index++;
-		TokenQueue.index++;
-		return new Type2(t1.value);
+	Token t1 =TokenQueue.top();
+	if(TokenQueue.queue.get(TokenQueue.index+1).type.equals(Token.LEFT_SQUARE_B)){
+		 
+		return new Type2();
+	}
+	else if(TokenQueue.queue.get(TokenQueue.index+1).type.equals(Token.IDENTIFIER)) {
+		
+		//TokenQueue.index++;
+		return new Type1();
 	}
 	else {
-		TokenQueue.index++;
-		return new Type1(t1.value);
+		
+		System.out.println("error expected "+t1.type+" Type");
+		return null;
 	}
 	
 }

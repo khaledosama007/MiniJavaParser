@@ -1,11 +1,11 @@
 package type;
 
 import array_type.ArrayType;
+import array_type.ArrayType1;
+import parser.TokenQueue;
 
 public class Type2 implements Type {
-	public String type;
-	final public String leftB = "[";
-	final public String rightB = "]";
+	ArrayType arrayType;
 	@Override
 	public void print() {
 		// TODO Auto-generated method stub
@@ -16,12 +16,24 @@ public class Type2 implements Type {
 		super();
 		
 	}
-	public Type2(String type){
-		this.type = type;
+	public Type2(ArrayType type){
+		this.arrayType = type;
 	}
 	@Override
 	public String getValue() {
-		return type+" "+leftB+rightB;
+		return arrayType.getValue();
 	}
+
+	@Override
+	public Type parse() {
+		Type2 type = new Type2();
+		ArrayType1 typeArr = new ArrayType1();
+		typeArr = typeArr.parse();
+		type.arrayType = typeArr;
+		//TokenQueue.index++;
+		return type;
+	}
+
+	
 
 }

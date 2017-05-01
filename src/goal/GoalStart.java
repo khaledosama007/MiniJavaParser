@@ -1,5 +1,7 @@
 package goal;
 
+import java.util.ArrayList;
+
 import class_declaration.ClassDeclaration;
 import main_class.MainClass;
 import symbols.EOF;
@@ -8,14 +10,14 @@ public class GoalStart implements Goal {
 
 	MainClass mainClass;
 
-	ClassDeclaration classDeclaration;
+	ArrayList<ClassDeclaration> classDeclaration;
 
 	EOF eof;
 	
-	public GoalStart(MainClass mainClass, ClassDeclaration classDeclaration, EOF eof) {
+	public GoalStart(MainClass mainClass, ArrayList<ClassDeclaration> cd, EOF eof) {
 		super();
 		this.mainClass = mainClass;
-		this.classDeclaration = classDeclaration;
+		this.classDeclaration = cd;
 		this.eof = eof;
 	}
 
@@ -28,8 +30,9 @@ public class GoalStart implements Goal {
 	@Override
 	public String getValue() {
 		String result = new String("");
-		result+=mainClass.getValue()+
-				classDeclaration.getValue();
+		result+=mainClass.getValue();
+			for(int i=0 ; i<classDeclaration.size(); i++)
+				result+=classDeclaration.get(i).getValue();
 		return result;
 	}
 

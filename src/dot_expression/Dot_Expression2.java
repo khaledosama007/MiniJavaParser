@@ -1,7 +1,7 @@
 package dot_expression;
 
 import java.util.List;
-
+import expression.RuleSelector;
 import parser.Token;
 import parser.TokenQueue;
 import expression.Expression;
@@ -50,25 +50,40 @@ public class Dot_Expression2  implements Dot_Expression {
 	
 	public static Dot_Expression parse () {
 		Dot_Expression2 dot_Expression = new Dot_Expression2 () ;
-		Token t = TokenQueue.queue.get(TokenQueue.index); 
-		TokenQueue.index++ ;
+		Token t = TokenQueue.getToken() ;
 		if (t.type.equals(Token.IDENTIFIER)) {
 			dot_Expression.id = t.value ;
 			t = TokenQueue.queue.get(TokenQueue.index);
 			TokenQueue.index++ ;
 		}else{
-			System.out.println("Sentax error \"identifier\" not found");
+			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;
 		}
-		if (t.type.equals(Token.RIGHT_ROUND_B)) {
+		if (t.type.equals(Token.LEFT_ROUND_B)) {
 			t = TokenQueue.queue.get(TokenQueue.index);
 			TokenQueue.index++ ;
 		}
 		else {
-			System.out.println("Sentax error \"(\" not found");
+			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;
 		}
-		
+		if (t.type.equals(Token.RIGHT_ROUND_B)) {
+			t = TokenQueue.getToken() ;
+		}
+		else {
+			do {
+				Expression exp = RuleSelector.select(TokenQueue.top()) ;
+				if (exp == null ) {
+					return null ;
+				}
+				dot_Expression.exps.add(exp) ;
+			}while (  TokenQueue.getToken().equals(Token.COMMA) ) ;
+			
+			if (!TokenQueue.top().equals(Token.RIGHT_ROUND_B)) {
+				System.out.println("Error : Expected "+t.type+" Type");
+				return null ;
+			}
+		}
 		return dot_Expression ;
 	}
 

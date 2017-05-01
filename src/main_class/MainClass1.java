@@ -10,7 +10,7 @@ import statement.Statement;
 public class MainClass1 implements MainClass {
 
 	final String classString = "class";
-	String id;
+	public String id = new String("");
 	final String leftB="{";
 	final String publicString="public";
 	final String staticString = "static";
@@ -20,14 +20,12 @@ public class MainClass1 implements MainClass {
 	final String StringS="String";
 	final String leftS="[";
 	final String rightS="]";
-	String id2;
+	String id2 =new String("");
 	final String rightB = ")";
 	final String leftB2 ="{";
 	Statement st ;
 	final String rightB2="}";
 	final String rightB3 = "}";
-	
-	
 	
 	
 	public MainClass1() {
@@ -41,159 +39,171 @@ public class MainClass1 implements MainClass {
 		this.st = st;
 	}
 	
-	
-	
-	
-	
-	
 	public String getId() {
 		return id;
 	}
-
-
-
-
-
 
 	public void setId(String id) {
 		this.id = id;
 	}
 
-
-
-
-
-
 	public String getId2() {
 		return id2;
 	}
-
-
-
-
-
 
 	public void setId2(String id2) {
 		this.id2 = id2;
 	}
 
-
-
-
-
-
 	public Statement getSt() {
 		return st;
 	}
 
-
-
-
-
-
 	public void setSt(Statement st) {
 		this.st = st;
 	}
-
-
-
-
-
-
 	@Override
 	public void print() {
 		
 		
 	}
-	public static MainClass parse(){
-		MainClass main_class = new MainClass1() ;
-		//main_class=main_class.parse(ArrayList,TokenQueue.index);
-		Token t = TokenQueue.queue.get(TokenQueue.index); 
-		TokenQueue.index++ ;
+	public  MainClass1 parse(){
+		MainClass1 main_class = new MainClass1() ;
+		Token t=TokenQueue.getToken();
 		if(t.type.equals(Token.CLASS) ){
-			t=TokenQueue.queue.get(TokenQueue.index);
-			TokenQueue.index++ ;
+			t=TokenQueue.getToken();
 			if(t.type.equals(Token.IDENTIFIER)){
-				t=TokenQueue.queue.get(TokenQueue.index);
-				TokenQueue.index++ ;
+				//main_class.id = t.value;
 				main_class.setId(t.value);
+				t=TokenQueue.getToken();
 				if (t.type.equals(Token.LEFT_CURLY_B)){
-					t=TokenQueue.queue.get(TokenQueue.index);
-					TokenQueue.index++ ;
+					t=TokenQueue.getToken();
 					if (t.type.equals(Token.PUBLIC)) {
-						t=TokenQueue.queue.get(TokenQueue.index);
-						TokenQueue.index++ ;
+						t=TokenQueue.getToken();
 						if (t.type.equals(Token.STATIC)) {
-							t=TokenQueue.queue.get(TokenQueue.index);
-							TokenQueue.index++ ;
+							t=TokenQueue.getToken();
 							if (t.type.equals(Token.VOID)) {
-								t=TokenQueue.queue.get(TokenQueue.index);
-								TokenQueue.index++ ;
+								t=TokenQueue.getToken();
 								if ( t.type.equals(Token.MAIN)) {
-									t=TokenQueue.queue.get(TokenQueue.index);
-									TokenQueue.index++ ;
+									t=TokenQueue.getToken();
 									if (t.type.equals(Token.LEFT_ROUND_B)) {
-										t=TokenQueue.queue.get(TokenQueue.index);
-										TokenQueue.index++ ;
+										t=TokenQueue.getToken();
 										if (t.type.equals(Token.STRING)) {
-											t=TokenQueue.queue.get(TokenQueue.index);
-											TokenQueue.index++ ;
-											if (t.type.equals(Token. LEFT_SQUARE_B)) {
-												t=TokenQueue.queue.get(TokenQueue.index);
-												TokenQueue.index++ ;
+											t=TokenQueue.getToken();
+											if (t.type.equals(Token.LEFT_SQUARE_B)) {
+												t=TokenQueue.getToken();
 												if (t.type.equals(Token.RIGHT_SQUARE_B)) {
-													t=TokenQueue.queue.get(TokenQueue.index);
-													TokenQueue.index++ ;
+													t=TokenQueue.getToken();
 													if (t.type.equals(Token.IDENTIFIER)) {
-														t=TokenQueue.queue.get(TokenQueue.index);
 														main_class.setId2(t.value);
-														TokenQueue.index++ ;
+														t=TokenQueue.getToken();
 														if(t.type.equals(Token.RIGHT_ROUND_B)){
-															t=TokenQueue.queue.get(TokenQueue.index);
-															TokenQueue.index++;
+															t=TokenQueue.getToken();
 															if(t.type.equals(Token.LEFT_CURLY_B)){
-																t=TokenQueue.queue.get(TokenQueue.index) ;
-																TokenQueue.index++;
+																t=TokenQueue.getToken();
 																Statement statement = RuleSelector.select(t);
 																//statement.parse();
-																TokenQueue.index++;
-																if(t.type.equals(Token.LEFT_CURLY_B)){
-																	t=TokenQueue.queue.get(TokenQueue.index) ;
-																	TokenQueue.index++;
-																	if(t.type.equals(Token.LEFT_CURLY_B)){
+																//TokenQueue.index++;
+																
+																if(t.type.equals(Token.RIGHT_CURLY_B)){
+																	t=TokenQueue.getToken();
+																	if(t.type.equals(Token.RIGHT_CURLY_B)){
 																		main_class.setSt(statement);
 																		return main_class;
 																	}
+																	else {
+																		System.out.println("Error : Expected "+t.type+" Type");
+																		return null;
+																	}
+																}
+																else {
+																	System.out.println("Error : Expected "+t.type+" Type");
+																	return null;
 																}
 															}
+															else {
+																System.out.println("Error : Expected "+t.type+" Type");
+																return null;
+															}
+														}
+														else {
+															System.out.println("Error : Expected "+t.type+" Type");
+															return null;
 														}
 													}
+													else {
+														System.out.println("Error : Expected "+t.type+" Type");
+														return null;
+													}
+												}
+												else {
+													System.out.println("Error : Expected "+t.type+" Type");
+													return null;
 												}
 											}
+											else {
+												System.out.println("Error : Expected "+t.type+" Type");
+												return null;
+											}
+										}
+										else {
+											System.out.println("Error : Expected "+t.type+" Type");
+											return null;
 										}
 									}
+									else {
+										System.out.println("Error : Expected "+t.type+" Type");
+										return null;
+									}
+								}
+								else {
+									System.out.println("Error : Expected "+t.type+" Type");
+									return null;
 								}
 							}
+							else {
+								System.out.println("Error : Expected "+t.type+" Type");
+								return null;
+							}
 						}
+						else {
+							System.out.println("Error : Expected "+t.type+" Type");
+							return null;
+						}
+					}
+					else {
+						System.out.println("Error : Expected "+t.type+" Type");
+						return null;
 					}
 					
 				}
-				
+				else {
+					System.out.println("Error : Expected "+t.type+" Type");
+					return null;
+				}
 				
 			}
+			else {
+				System.out.println("Error : Expected "+t.type+" Type");
+				return null;
+			}
 		}
-		return main_class;
+		else {
+			System.out.println("Error : Expected "+t.type+" Type");
+			return null;
+		}
+		//return main_class;
 	}
 	@Override
 	public String getValue() {
 		String result = new String("");
-		result+=classString+" "+id+" "+leftB+publicString+" "+staticString+" "+voidString+" "+mainString+
+		result+=classString+" "+this.id+" "+leftB+publicString+" "+staticString+" "+voidString+" "+mainString+
 				" "+leftR+
 				StringS+
 				leftS+rightS+id2+
 				rightB+leftB2+
-				st.getValue()
-				+rightB2+rightB3;
+				//st.getValue()
+				rightB2+rightB3;
 		return result;
 	}
 
