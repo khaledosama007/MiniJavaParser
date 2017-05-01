@@ -39,6 +39,7 @@ public class Expression_Alpha1 implements Expression_Alpha {
 		Expression_Alpha1 alpha1 = new Expression_Alpha1() ;
 		Token t = TokenQueue.getToken() ;
 		if (t.type.equals(Token.PLUS) || t.type.equals(Token.MINUS) || t.type.equals(Token.MULTIPLY) || t.type.equals(Token.GREATERTHAN) || t.type.equals(Token.AND)) {
+			alpha1.binaryOp = t.value ;
 			t = TokenQueue.getToken() ;
 		}else {
 			System.out.println("Error : Expected "+t.type+" Type");
