@@ -15,6 +15,7 @@ public class ArrayType1 implements ArrayType {
 		this.regularType = regularType;
 	}
 	
+	
 	public ArrayType1() {
 		// TODO Auto-generated constructor stub
 	}
