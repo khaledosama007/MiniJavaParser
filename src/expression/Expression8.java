@@ -1,5 +1,7 @@
 package expression;
 
+import parser.Token;
+import parser.TokenQueue;
 import expression_alpha.Expression_Alpha;
 
 public class Expression8 implements Expression {
@@ -17,10 +19,49 @@ public class Expression8 implements Expression {
 
 	
 	
+	public Expression8() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	@Override
 	public String getValue() {
 		// TODO Auto-generated method stub
 		return "(" + exp.getValue() + ")" + exp_alpha.getValue();
+	}
+	
+	public static Expression parse () {
+		Expression8 expression8 = new Expression8() ;
+		Token t = TokenQueue.getToken() ;
+		
+		if (t.type.equals(Token.LEFT_ROUND_B)) {
+			t = TokenQueue.getToken() ;
+		}else {
+			System.out.println("Error : Expected "+t.type+" Type");
+			return null ;
+		}
+		Expression exp = RuleSelector.select(t) ;
+		if (exp == null ) {
+			return null ;
+		}else {
+			expression8.exp = exp ;
+			t = TokenQueue.getToken() ;
+		}
+		if (t.type.equals(Token.RIGHT_ROUND_B)) {
+			t = TokenQueue.getToken() ;
+		}else {
+			System.out.println("Error : Expected "+t.type+" Type");
+			return null ;
+		}
+		
+		Expression_Alpha alpha = expression_alpha.RuleSelector.select(t) ;
+		if (alpha == null ) {
+			return null ;
+		}else {
+			expression8.exp_alpha = alpha ;
+		}
+		return expression8 ;
 	}
 	
 	

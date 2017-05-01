@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class Token {
 	public static final String CLASS = "CLASS";
 	public static final String SOP = "System.out.println";
-	public static String IDENTIFIER  = "IDENTIFIER";
+	public static final String IDENTIFIER  = "IDENTIFIER";
 	public static final String  LEFT_CURLY_B = "LEFT_CURLY_B";
 	public static final String  RIGHT_CURLY_B = "RIGHT_CURLY_B";
 	public static final String PUBLIC  = "PUBLIC";
@@ -31,6 +31,7 @@ public class Token {
 	public static final String AND = "AND";
 	public static final String MINUS = "MINUS";
 	public static final String MULTIPLY = "MULTIPLY";
+	public static final String PLUS = "PLUS" ;
 	public static final String LESSTHAN = "LESSTHAN";
 	public static final String GREATERTHAN = "GREATERTHAN";
 	public static final String ELSE ="ELSE";
@@ -42,8 +43,8 @@ public class Token {
 	public static final String FLOAT = "FLOAT";
 	public static final String CHARACHTER = "CHARACHTER";
 	public static final String INTEGER = "INT";
-
-
+	public static final String INTEGER_LITERAL = "INTEGER_LITERAL" ;
+	public static final String STRING_LITERAL = "STRING_LITERAL" ;
 	
 	public Token(String type , String value){
 		this.type = type;
