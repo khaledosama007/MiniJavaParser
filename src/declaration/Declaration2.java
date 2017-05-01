@@ -1,5 +1,8 @@
 package declaration;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import gui_module.Visitor;
 import method_declaration.MethodDeclaration;
 import method_declaration.MethodDeclaration1;
 
@@ -41,5 +44,18 @@ public class Declaration2 implements Declaration {
 		return dec2;
 		
 	}
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		visitor.visit(this);
+	}
 
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Declaration");
+		DefaultMutableTreeNode temp = new DefaultMutableTreeNode();
+		temp = methodDeclaration.getNode();
+		root.add(temp);
+		return root;
+	}
 }

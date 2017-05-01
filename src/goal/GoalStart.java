@@ -3,16 +3,17 @@ package goal;
 import java.util.ArrayList;
 
 import class_declaration.ClassDeclaration;
+import gui_module.Visitor;
 import main_class.MainClass;
 import symbols.EOF;
 
 public class GoalStart implements Goal {
 
-	MainClass mainClass;
+	public MainClass mainClass;
 
-	ArrayList<ClassDeclaration> classDeclaration;
+	public ArrayList<ClassDeclaration> classDeclaration;
 
-	EOF eof;
+	public EOF eof;
 	
 	public GoalStart(MainClass mainClass, ArrayList<ClassDeclaration> cd, EOF eof) {
 		super();
@@ -35,5 +36,9 @@ public class GoalStart implements Goal {
 				result+=classDeclaration.get(i).getValue();
 		return result;
 	}
-
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		visitor.visit(this);
+	}
 }

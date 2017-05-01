@@ -1,14 +1,17 @@
 package array_type;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 import symbols.RegularType;
 
 public class ArrayType1 implements ArrayType {
 
-	String regularType;
-	final String left = "[";
-	final String right = "]";
+	public String regularType;
+	public final String left = "[";
+	public final String right = "]";
 	
 	public ArrayType1(String regularType) {
 		super();
@@ -61,6 +64,21 @@ public class ArrayType1 implements ArrayType {
 			System.out.println("Error Expexted "+name.type+" Type");
 			return null;
 		}
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		visitor.visit(this);
+	}
+
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("ArrayType");
+		root.add(new DefaultMutableTreeNode(regularType));
+		root.add(new DefaultMutableTreeNode("["));
+		root.add(new DefaultMutableTreeNode("]"));
+		return root;
 	}
 
 }

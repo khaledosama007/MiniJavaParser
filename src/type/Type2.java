@@ -1,7 +1,10 @@
 package type;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import array_type.ArrayType;
 import array_type.ArrayType1;
+import gui_module.Visitor;
 import parser.TokenQueue;
 
 public class Type2 implements Type {
@@ -33,7 +36,20 @@ public class Type2 implements Type {
 		//TokenQueue.index++;
 		return type;
 	}
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		visitor.visit(this);
+	}
 
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Type 2");
+		DefaultMutableTreeNode temp = new DefaultMutableTreeNode();
+		temp = arrayType.getNode();
+		root.add(temp);
+		return root;
+	}
 	
 
 }

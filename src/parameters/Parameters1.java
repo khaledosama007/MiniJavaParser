@@ -2,6 +2,9 @@ package parameters;
 
 import java.util.ArrayList;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 import symbols.RegularType;
@@ -62,4 +65,21 @@ public class Parameters1 implements Parameter {
 		return null;
 		
 	}
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		visitor.visit(this);
+	}
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Parameter");
+		for(int i=0 ; i<type.size() ; i++){
+			root.add(new DefaultMutableTreeNode(type.get(i).getNode()));
+		}
+		for(int i=0 ; i<id.size() ; i++){
+			root.add(new DefaultMutableTreeNode(id.get(i)));
+		}
+		return root;
+	}
+	
 }

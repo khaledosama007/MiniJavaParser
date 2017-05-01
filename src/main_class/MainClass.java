@@ -1,8 +1,9 @@
 package main_class;
 
+import gui_module.Visitable;
 import statement.Statement;
 
-public interface MainClass {
+public interface MainClass extends Visitable {
 	public void print();
 	public String getValue();
 	public void setId(String value);

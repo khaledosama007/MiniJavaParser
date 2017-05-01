@@ -1,5 +1,8 @@
 package main_class;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 import statement.RuleSelector;
@@ -7,23 +10,23 @@ import statement.Statement;
 
 public class MainClass1 implements MainClass {
 
-	final String classString = "class";
+	public  final String classString = "class";
 	public String id = new String("");
-	final String leftB = "{";
-	final String publicString = "public";
-	final String staticString = "static";
-	final String voidString = "void";
-	final String mainString = "main";
-	final String leftR = "(";
-	final String StringS = "String";
-	final String leftS = "[";
-	final String rightS = "]";
-	String id2 = new String("");
-	final String rightB = ")";
-	final String leftB2 = "{";
-	Statement st;
-	final String rightB2 = "}";
-	final String rightB3 = "}";
+	public  final String leftB = "{";
+	public  final String publicString = "public";
+	public final String staticString = "static";
+	public final String voidString = "void";
+	public final String mainString = "main";
+	public final String leftR = "(";
+	public final String StringS = "String";
+	public final String leftS = "[";
+	public final String rightS = "]";
+	public String id2 = new String("");
+	public final String rightB = ")";
+	public final String leftB2 = "{";
+	public Statement st;
+	public final String rightB2 = "}";
+	public final String rightB3 = "}";
 
 	public MainClass1() {
 		super();
@@ -195,5 +198,34 @@ public class MainClass1 implements MainClass {
 		// TODO Auto-generated method stub
 
 	}
-
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		visitor.visit(this);
+	}
+	public DefaultMutableTreeNode getNode(){
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode("Main Class");
+		node.add(new DefaultMutableTreeNode("class"));
+		if(!id.equals(null)){
+			node.add(new DefaultMutableTreeNode(id));
+		}
+		node.add(new DefaultMutableTreeNode(leftB));
+		node.add(new DefaultMutableTreeNode(publicString));
+		node.add(new DefaultMutableTreeNode(staticString));
+		node.add(new DefaultMutableTreeNode(voidString));
+		node.add(new DefaultMutableTreeNode(mainString));
+		node.add(new DefaultMutableTreeNode(leftR));
+		node.add(new DefaultMutableTreeNode(StringS));
+		node.add(new DefaultMutableTreeNode(leftS));
+		node.add(new DefaultMutableTreeNode(rightS));
+		if(!id2.equals(null)){
+			node.add(new DefaultMutableTreeNode(id2));
+		}
+		node.add(new DefaultMutableTreeNode(rightB));
+		node.add(new DefaultMutableTreeNode(leftB2));
+		//node.add(new DefaultMutableTreeNode(rightS));//STAEMENT
+		node.add(new DefaultMutableTreeNode(rightB2));
+		node.add(new DefaultMutableTreeNode(rightB3));
+		return node;
+	}
 }

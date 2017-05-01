@@ -27,6 +27,7 @@ import expression_alpha.Expression_Alpha3;
 import expression_alpha.Expression_Alpha4;
 import goal.Goal;
 import goal.GoalStart;
+import gui_module.TreeNodeVisitor;
 import identifier_statement.Identifier_Statement;
 import identifier_statement.Identifier_Statement1;
 import main_class.MainClass;
@@ -89,11 +90,11 @@ public class Main {
 	}
 	public static void main(String[] args) throws IOException {
 		
-		ArrayList<Token> inputArrayList = readFromFile("Lex_test_4_ans.txt");
+		/*ArrayList<Token> inputArrayList = readFromFile("Lex_test_4_ans.txt");
 		for (int i=0 ;i<inputArrayList.size();i++)
 		{
 			System.out.println(inputArrayList.get(i).type + " = " + inputArrayList.get(i).value );
-		}
+		}*/
 
 
 		/*Expression[] arr = new Expression[1];
@@ -137,7 +138,7 @@ public class Main {
 		Goal g = new GoalStart(mc,cd , new EOF());
 		
 		System.out.println(g.getValue());*/
-		/*
+		
 		ArrayList<Token> q=new ArrayList<>();
 		TokenQueue t = new TokenQueue();
 		//test case
@@ -191,8 +192,10 @@ public class Main {
 //		JFrame frame = new JFrame("Tree");
 //		frame.add(tree);
 //		frame.setVisible(true);
-		
-		System.out.println(g.getValue());
+		TreeNodeVisitor visitor = new TreeNodeVisitor();
+		visitor.visit(g);
+		visitor.showTree();
+		//System.out.println(g.getValue());
 		//Goal g = p.parse();
 		//System.out.println(g.getValue());*/
 

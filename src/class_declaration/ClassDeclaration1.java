@@ -2,8 +2,11 @@ package class_declaration;
 
 import java.util.ArrayList;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import declaration.Declaration;
 import declaration.RuleSelector;
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 import symbols.RegularType;
@@ -141,5 +144,30 @@ public class ClassDeclaration1 implements ClassDeclaration {
 		} 
 		return decs;
 	}
-
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		visitor.visit(this);
+	}
+	public DefaultMutableTreeNode getNode(){
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Class Declaration");
+		root.add(new DefaultMutableTreeNode(classString));
+		if(!id1.equals(null)){
+			root.add(new DefaultMutableTreeNode(id1));
+		}
+		if(!extendsString.equals(null)){
+			root.add(new DefaultMutableTreeNode(extendsString));
+		}
+		if(!id2.equals(null)){
+			root.add(new DefaultMutableTreeNode(id2));
+		}
+		root.add(new DefaultMutableTreeNode(leftC));
+		for(int i=0 ; i<declartion.size() ; i++){
+			DefaultMutableTreeNode temp = new DefaultMutableTreeNode();
+			temp = declartion.get(i).getNode();
+			root.add(temp);
+		}
+		root.add(new DefaultMutableTreeNode(rightC));
+		return root;
+	}
 }

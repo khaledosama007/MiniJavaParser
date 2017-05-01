@@ -2,7 +2,10 @@ package method_declaration;
 
 import java.util.ArrayList;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import expression.Expression;
+import gui_module.Visitor;
 import parameters.Parameter;
 import parameters.Parameters1;
 import parser.Token;
@@ -23,7 +26,7 @@ public class MethodDeclaration1 implements MethodDeclaration {
 	Type type;
 	String id;
 	final String leftB = "(";
-	Parameter parameter ;
+	Parameter parameter;
 
 	final String rightB = ")";
 	final String leftC = "{";
@@ -36,14 +39,13 @@ public class MethodDeclaration1 implements MethodDeclaration {
 	final String semicolon = ";";
 	final String leftB2 = "}";
 
-	public MethodDeclaration1(String access,Type type, String id, Parameter parameter, ArrayList<VarDeclaration> varDeclaration,
-			ArrayList<Statement> stmt, Expression exp) {
+	public MethodDeclaration1(String access, Type type, String id, Parameter parameter,
+			ArrayList<VarDeclaration> varDeclaration, ArrayList<Statement> stmt, Expression exp) {
 		super();
-		if(access.equals(PUBLIC)){
+		if (access.equals(PUBLIC)) {
 			this.access = PUBLIC;
-		}
-		else {
-			this.access=PRIVATE;
+		} else {
+			this.access = PRIVATE;
 		}
 		this.type = type;
 		this.id = id;
@@ -62,18 +64,18 @@ public class MethodDeclaration1 implements MethodDeclaration {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	@Override
 	public String getValue() {
 		String result = new String("");
-		result+=PUBLIC+" "+type.getValue()+" "+id+" "+leftB+parameter.getValue()+rightB+leftC;
-		for(int i=0 ; i<varDeclaration.size() ; i++){
-			result+=varDeclaration.get(i).getValue();
+		result += PUBLIC + " " + type.getValue() + " " + id + " " + leftB + parameter.getValue() + rightB + leftC;
+		for (int i = 0; i < varDeclaration.size(); i++) {
+			result += varDeclaration.get(i).getValue();
 		}
-		for(int i=0 ; i<stmt.size() ; i++){
-			result+=stmt.get(i).getValue();
+		for (int i = 0; i < stmt.size(); i++) {
+			result += stmt.get(i).getValue();
 		}
-		result+=RETURN+exp.getValue()+semicolon+leftB2;
+		result += RETURN + exp.getValue() + semicolon + leftB2;
 		return result;
 	}
 
@@ -86,108 +88,133 @@ public class MethodDeclaration1 implements MethodDeclaration {
 		Statement stmt;
 		Expression expression;
 		Token token = TokenQueue.queue.get(TokenQueue.index);
-		if(token.type.equals(Token.PUBLIC)){
+		if (token.type.equals(Token.PUBLIC)) {
 			methodDeclaration1.access = methodDeclaration1.PUBLIC;
-		}
-		else {
+		} else {
 			methodDeclaration1.access = methodDeclaration1.PRIVATE;
 		}
 		TokenQueue.index++;
 		token = TokenQueue.queue.get(TokenQueue.index);
-		if(RegularType.isRegular(token.value) || token.type.equals(Token.LEFT_SQUARE_B)){
+		if (RegularType.isRegular(token.value) || token.type.equals(Token.LEFT_SQUARE_B)) {
 			Type type = TypeSelector.select();
-			type=type.parse();
-			//TokenQueue.index++;
+			type = type.parse();
+			// TokenQueue.index++;
 			token = TokenQueue.queue.get(TokenQueue.index);
-			if(token.type.equals(Token.IDENTIFIER)){
+			if (token.type.equals(Token.IDENTIFIER)) {
 				id = token.value;
 				TokenQueue.index++;
 				token = TokenQueue.queue.get(TokenQueue.index);
-				if(token.type.equals(Token.LEFT_ROUND_B)){
+				if (token.type.equals(Token.LEFT_ROUND_B)) {
 					TokenQueue.index++;
 					token = TokenQueue.queue.get(TokenQueue.index);
-					while(RegularType.isRegular(token.value)){
+					while (RegularType.isRegular(token.value)) {
 						Parameters1 p = new Parameters1();
 						p = p.parse();
 						params.add(p);
 						TokenQueue.index++;
 					}
-					if(token.type.equals(Token.RIGHT_ROUND_B)){
+					if (token.type.equals(Token.RIGHT_ROUND_B)) {
 						TokenQueue.index++;
 						token = TokenQueue.queue.get(TokenQueue.index);
-						if(token.type.equals(Token.LEFT_CURLY_B)){
+						if (token.type.equals(Token.LEFT_CURLY_B)) {
 							TokenQueue.index++;
 							token = TokenQueue.queue.get(TokenQueue.index);
-							while(RegularType.isRegular(token.value)){
+							while (RegularType.isRegular(token.value)) {
 								VarDeclaration1 vard1 = new VarDeclaration1();
 								vard1 = vard1.parse();
 								methodDeclaration1.varDeclaration.add(vard1);
 							}
 							token = TokenQueue.queue.get(TokenQueue.index);
-							while(token.type.equals(Token.LEFT_CURLY_B) ||token.type.equals(Token.IF)
-						|| token.type.equals(Token.WHILE) || token.type.equals(Token.SOP) 
-						|| token.type.equals(Token.IDENTIFIER)){
-								//Statement Calls
-								//Statement st = 
+							while (token.type.equals(Token.LEFT_CURLY_B) || token.type.equals(Token.IF)
+									|| token.type.equals(Token.WHILE) || token.type.equals(Token.SOP)
+									|| token.type.equals(Token.IDENTIFIER)) {
+								// Statement Calls
+								// Statement st =
 							}
 							token = TokenQueue.queue.get(TokenQueue.index);
-							if(token.type.equals(Token.RETURN)){
-								/////Expression exp
+							if (token.type.equals(Token.RETURN)) {
+								///// Expression exp
 								token = TokenQueue.queue.get(TokenQueue.index);
-								if(token.type.equals(Token.SEMICOLON)){
+								if (token.type.equals(Token.SEMICOLON)) {
 									TokenQueue.index++;
 									token = TokenQueue.queue.get(TokenQueue.index);
-									if(token.type.equals(Token.LEFT_CURLY_B)){
-										return methodDeclaration1;}
-									else {
-										System.out.println("Expected "+token.type+" Type");
+									if (token.type.equals(Token.LEFT_CURLY_B)) {
+										return methodDeclaration1;
+									} else {
+										System.out.println("Expected " + token.type + " Type");
 										return null;
 									}
-								}
-								else {
-									System.out.println("Expected "+token.type+" Type");
+								} else {
+									System.out.println("Expected " + token.type + " Type");
 									return null;
 								}
-							}
-							else {
-								System.out.println("Expected "+token.type+" Type");
+							} else {
+								System.out.println("Expected " + token.type + " Type");
 								return null;
 							}
-						}
-						else {
-							System.out.println("Expected "+token.type+" Type");
+						} else {
+							System.out.println("Expected " + token.type + " Type");
 							return null;
 						}
-					}else {
-						System.out.println("Expected "+token.type+" Type");
+					} else {
+						System.out.println("Expected " + token.type + " Type");
 						return null;
 					}
-				}
-				else {
-					System.out.println("Expected "+token.type+" Type");
+				} else {
+					System.out.println("Expected " + token.type + " Type");
 					return null;
 				}
-			}
-			else {
-				System.out.println("Expected "+token.type+" Type");
+			} else {
+				System.out.println("Expected " + token.type + " Type");
 				return null;
 			}
-		}
-		else {
-			System.out.println("Expected "+token.type+" Type");
+		} else {
+			System.out.println("Expected " + token.type + " Type");
 			return null;
 		}
-		
-//		methodDeclaration1.type =type;
-//		TokenQueue.index++;
-//		token = TokenQueue.queue.get(TokenQueue.index);
-//		if(token.type.equals(Token.IDENTIFIER)){
-//			methodDeclaration1.id = token.value;
-//			TokenQueue.index++;
-//			token = TokenQueue.queue.get(TokenQueue.index);
-//			
-//		}
-//		return null;
+
+		// methodDeclaration1.type =type;
+		// TokenQueue.index++;
+		// token = TokenQueue.queue.get(TokenQueue.index);
+		// if(token.type.equals(Token.IDENTIFIER)){
+		// methodDeclaration1.id = token.value;
+		// TokenQueue.index++;
+		// token = TokenQueue.queue.get(TokenQueue.index);
+		//
+		// }
+		// return null;
 	}
 
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		visitor.visit(this);
+	}
+
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Method Declaration");
+		root.add(new DefaultMutableTreeNode(access));
+		root.add(new DefaultMutableTreeNode(type.getNode()));
+		root.add(new DefaultMutableTreeNode(id));
+		root.add(new DefaultMutableTreeNode(leftB));
+		if (parameter != null) {
+			root.add(new DefaultMutableTreeNode(parameter.getNode()));
+		}
+		root.add(new DefaultMutableTreeNode(rightB));
+		root.add(new DefaultMutableTreeNode(leftC));
+		for (int i=0 ; i<varDeclaration.size() ; i++){
+			DefaultMutableTreeNode temp = new DefaultMutableTreeNode(varDeclaration.get(i).getNode());
+			root.add(temp);
+		}
+//		for (int i=0 ; i<stmt.size() ; i++){
+//			DefaultMutableTreeNode temp = new DefaultMutableTreeNode(stmt.get(i).getNode());
+//			root.add(temp);
+//		}
+		root.add(new DefaultMutableTreeNode(RETURN));
+		//root.add(new DefaultMutableTreeNode(exp.getNode()));
+		root.add(new DefaultMutableTreeNode(semicolon));
+		root.add(new DefaultMutableTreeNode(leftB2));
+		return root;
+	}
 }

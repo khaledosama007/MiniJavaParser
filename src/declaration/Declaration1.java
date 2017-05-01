@@ -1,5 +1,8 @@
 package declaration;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import gui_module.Visitor;
 import var_declaration.VarDeclaration;
 import var_declaration.VarDeclaration1;
 
@@ -38,5 +41,18 @@ public class Declaration1 implements Declaration {
 		return d1;
 		
 	}
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		visitor.visit(this);
+	}
 
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Declaration");
+		DefaultMutableTreeNode temp = new DefaultMutableTreeNode();
+		temp = varDeclaration.getNode();
+		root.add(temp);
+		return root;
+	}
 }

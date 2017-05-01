@@ -1,6 +1,8 @@
 package class_declaration;
 
-public interface ClassDeclaration {
+import gui_module.Visitable;
+
+public interface ClassDeclaration extends Visitable {
 	public void print();
 	public String getValue();
 	

@@ -1,6 +1,9 @@
 package var_declaration;
 
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 import type.Type;
@@ -62,5 +65,20 @@ public class VarDeclaration1 implements VarDeclaration {
 		
 		
 	}
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		visitor.visit(this);
+	}
 
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Var Declaration");
+		DefaultMutableTreeNode temp = new DefaultMutableTreeNode();
+		temp = type.getNode();
+		root.add(temp);
+		root.add(new DefaultMutableTreeNode(id));
+		root.add(new DefaultMutableTreeNode(semicolon));
+		return root;
+	}
 }
