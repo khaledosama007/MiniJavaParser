@@ -1,5 +1,5 @@
 < CLASS > : -class-
-< ID > : -MyClass-
+< IDENTIFIER > : -MyClass-
 < LEFT_CURLY_B > : -{-
 < PUBLIC > : -public-
 < STATIC > : -static-
@@ -9,7 +9,7 @@
 < STRING > : -String-
 < LEFT_SQUARE_B > : -[-
 < RIGHT_SQUARE_B > : -]-
-< ID > : -a-
+< IDENTIFIER > : -a-
 < RIGHT_ROUND_B > : -)-
 < LEFT_CURLY_B > : -{-
 < SOP > : -System.out.println-

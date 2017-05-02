@@ -3,10 +3,11 @@ package expression;
 import parser.Token;
 import parser.TokenQueue;
 import expression_alpha.Expression_Alpha;
+import gui_module.Visitor;
 
 public class Expression2 implements Expression {
 
-	Expression_Alpha exp ;
+	public Expression_Alpha exp ;
 	
 	public Expression2(Expression_Alpha exp) {
 		super();
@@ -40,6 +41,11 @@ public class Expression2 implements Expression {
 			expression2.exp = alpha ;
 		}
 		return expression2 ;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
 	}
 
 }

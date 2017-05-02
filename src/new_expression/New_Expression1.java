@@ -4,10 +4,11 @@ import parser.Token;
 import parser.TokenQueue;
 import expression.Expression;
 import expression.RuleSelector;
+import gui_module.Visitor;
 
 public class New_Expression1 implements New_Expression {
 
-	Expression exp ;
+	public Expression exp ;
 	
 	public New_Expression1(Expression exp) {
 		super();
@@ -54,6 +55,12 @@ public class New_Expression1 implements New_Expression {
 		}
 		
 		return expression1 ;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
+		
 	}
 	
 

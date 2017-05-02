@@ -90,13 +90,13 @@ public class Main {
 	}
 	public static void main(String[] args) throws IOException {
 		
-		/*ArrayList<Token> inputArrayList = readFromFile("Lex_test_4_ans.txt");
+		ArrayList<Token> inputArrayList = readFromFile("Lex_test_1_ans.txt");
 		for (int i=0 ;i<inputArrayList.size();i++)
 		{
 			System.out.println(inputArrayList.get(i).type + " = " + inputArrayList.get(i).value );
-		}*/
+		}
 
-
+//////////////////////////////////////////// Mile Stone 2 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 		/*Expression[] arr = new Expression[1];
 		// TODO Auto-generated method stub
 		Expression_Alpha lamda = new Expression_Alpha4();
@@ -138,11 +138,11 @@ public class Main {
 		Goal g = new GoalStart(mc,cd , new EOF());
 		
 		System.out.println(g.getValue());*/
-		
+////////////////////////////////////////////Mile Stone 2 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\		
 		ArrayList<Token> q=new ArrayList<>();
 		TokenQueue t = new TokenQueue();
 		//test case
-		q.add(new Token("CLASS" , "class"));
+		/*q.add(new Token("CLASS" , "class"));
 		q.add(new Token("IDENTIFIER" , "MyC"));
 		//q.add(new Token("INT" , "int"));
 		q.add(new Token("LEFT_CURLY_B" , "{"));
@@ -196,7 +196,8 @@ public class Main {
 		q.add(new Token("RIGHT_CURLY_B" , "}"));
 		q.add(new Token("RIGHT_CURLY_B" , "}"));
 		//q.add(new Token("RETURN" , "return"));
-		t.queue = q;
+		 * */
+		t.queue = inputArrayList;
 		Parser p = new Parser();
 		Goal g = p.parse();
 //		DefaultMutableTreeNode root = new DefaultMutableTreeNode("ROOT");
@@ -205,15 +206,11 @@ public class Main {
 //		JFrame frame = new JFrame("Tree");
 //		frame.add(tree);
 //		frame.setVisible(true);
-		//TreeNodeVisitor visitor = new TreeNodeVisitor();
-		//visitor.visit(g);
-		//g.accept(visitor);
-		//visitor.showTree();
+		TreeNodeVisitor visitor = new TreeNodeVisitor();
+		g.accept(visitor);
+		visitor.showTree();
 		System.out.println(g.getValue());
-		//Goal g = p.parse();
-		//System.out.println(g.getValue());*/
 
-		
 	}
 	
 

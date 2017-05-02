@@ -1,5 +1,6 @@
 package dot_expression;
 
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 
@@ -21,6 +22,12 @@ public class Dot_Expression1  implements Dot_Expression {
 			return null ;
 		}
 		return dot_Expression ;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

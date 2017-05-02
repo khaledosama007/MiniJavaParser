@@ -5,6 +5,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import array_type.ArrayType;
 import class_declaration.ClassDeclaration;
 import declaration.Declaration;
+import dot_expression.Dot_Expression;
 import expression.Expression;
 import expression_alpha.Expression_Alpha;
 import goal.Goal;
@@ -32,6 +33,7 @@ public interface Visitor {
 	public DefaultMutableTreeNode visit(Statement st);
 	public DefaultMutableTreeNode visit(Type type);
 	public DefaultMutableTreeNode visit(VarDeclaration vard	);
+	public DefaultMutableTreeNode visit(Dot_Expression exp );
 	
 	
 }

@@ -1,10 +1,12 @@
 package dot_expression;
 
 import java.util.List;
+
 import expression.RuleSelector;
 import parser.Token;
 import parser.TokenQueue;
 import expression.Expression;
+import gui_module.Visitor;
 
 
 public class Dot_Expression2  implements Dot_Expression {
@@ -83,6 +85,11 @@ public class Dot_Expression2  implements Dot_Expression {
 			}
 		}
 		return dot_Expression ;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;	
 	}
 
 }

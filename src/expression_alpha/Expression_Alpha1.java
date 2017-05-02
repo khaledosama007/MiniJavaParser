@@ -4,12 +4,13 @@ import parser.Token;
 import parser.TokenQueue;
 import expression.Expression;
 import expression.RuleSelector;
+import gui_module.Visitor;
 
 public class Expression_Alpha1 implements Expression_Alpha {
 
-	Expression_Alpha exp_alpha ;
-	Expression exp ;
-	String binaryOp ;
+	public Expression_Alpha exp_alpha ;
+	public Expression exp ;
+	public String binaryOp ;
 	
 	
 	
@@ -60,6 +61,12 @@ public class Expression_Alpha1 implements Expression_Alpha {
 		}
 		
 		return alpha1 ;
+		
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
 		
 	}
 

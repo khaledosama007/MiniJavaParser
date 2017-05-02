@@ -1,12 +1,13 @@
 package identifier_statement;
 
 import expression.Expression;
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 
 public class Identifier_Statement1 implements Identifier_Statement {
 
-	Expression exp;
+	public Expression exp;
 
 	public Identifier_Statement1(Expression exp) {
 		super();
@@ -59,4 +60,9 @@ public class Identifier_Statement1 implements Identifier_Statement {
 		//return identifier_Statement1;
 	}
 
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
+		
+	}
 }

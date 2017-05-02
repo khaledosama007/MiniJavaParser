@@ -2,14 +2,15 @@ package identifier_statement;
 
 import expression.Expression;
 import expression.RuleSelector;
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 
 public class Identifier_Statement2 implements Identifier_Statement {
 
 	// "[" Expression "]" "=" Expression ";"
-	Expression exp1;
-	Expression exp2;
+	public Expression exp1;
+	public Expression exp2;
 
 	public Identifier_Statement2(Expression exp1, Expression exp2) {
 		super();
@@ -81,6 +82,12 @@ public class Identifier_Statement2 implements Identifier_Statement {
 		}
 
 		return identifier_Statement2;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
+		
 	}
 
 }

@@ -1,12 +1,14 @@
 package statement;
 
+import gui_module.Visitor;
+
 import java.util.ArrayList;
 
 import parser.Token;
 import parser.TokenQueue;
 
 public class Statement1 implements Statement {
-	ArrayList<Statement> statements;
+	public ArrayList<Statement> statements;
 
 	public Statement1(ArrayList<Statement> statements) {
 		super();
@@ -55,6 +57,12 @@ public class Statement1 implements Statement {
 		}
 			
 		return statement1;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
+		
 	}
 
 }

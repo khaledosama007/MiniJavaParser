@@ -3,11 +3,12 @@ package expression;
 import parser.Token;
 import parser.TokenQueue;
 import expression_alpha.Expression_Alpha;
+import gui_module.Visitor;
 
 public class Expression1 implements Expression  {
 
-	String num ;
-	Expression_Alpha exp ;
+	public String num ;
+	public Expression_Alpha exp ;
 	
 	
 	
@@ -53,6 +54,13 @@ public class Expression1 implements Expression  {
 			//System.out.println("select"+TokenQueue.top().value);
 		}
 		return expression1 ;
+	}
+
+
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
 	}
 
 }
