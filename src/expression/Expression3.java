@@ -3,6 +3,7 @@ package expression;
 import parser.Token;
 import parser.TokenQueue;
 import expression_alpha.Expression_Alpha;
+import gui_module.Visitor;
 
 public class Expression3 implements Expression {
 
@@ -51,6 +52,10 @@ public class Expression3 implements Expression {
 		return expression3 ;
 	}
 	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
+	}
 	
 
 }

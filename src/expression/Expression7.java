@@ -4,6 +4,7 @@ import new_expression.New_Expression;
 import parser.Token;
 import parser.TokenQueue;
 import expression_alpha.Expression_Alpha;
+import gui_module.Visitor;
 
 public class Expression7 implements Expression {
 
@@ -58,6 +59,11 @@ public class Expression7 implements Expression {
 			expression7.exp_alpha = alpha ;
 		}
 		return expression7 ;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
 	}
 
 }

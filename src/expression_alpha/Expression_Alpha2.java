@@ -4,6 +4,7 @@ import parser.Token;
 import parser.TokenQueue;
 import expression.Expression;
 import expression.RuleSelector;
+import gui_module.Visitor;
 
 public class Expression_Alpha2 implements Expression_Alpha {
 	
@@ -65,7 +66,11 @@ public class Expression_Alpha2 implements Expression_Alpha {
 		return alpha1 ;
 	}
 	
-	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
+		
+	}
 	
 
 }

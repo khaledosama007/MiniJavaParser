@@ -13,6 +13,7 @@ import class_declaration.ClassDeclaration1;
 import declaration.Declaration;
 import declaration.Declaration1;
 import declaration.Declaration2;
+import dot_expression.Dot_Expression;
 import expression.Expression;
 import expression_alpha.Expression_Alpha;
 import goal.Goal;
@@ -267,6 +268,11 @@ public class TreeNodeVisitor implements Visitor {
 		frame.getContentPane().add(jScrollPane);
 		frame.add(tree);
 		frame.setVisible(true);
+	}
+	@Override
+	public DefaultMutableTreeNode visit(Dot_Expression exp) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
