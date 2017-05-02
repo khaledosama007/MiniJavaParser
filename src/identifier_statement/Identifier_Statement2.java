@@ -1,6 +1,9 @@
 package identifier_statement;
 
 import expression.Expression;
+import expression.RuleSelector;
+import parser.Token;
+import parser.TokenQueue;
 
 public class Identifier_Statement2 implements Identifier_Statement {
 
@@ -30,10 +33,54 @@ public class Identifier_Statement2 implements Identifier_Statement {
 		return result;
 	}
 
-	@Override
-	public Identifier_Statement parse() {
+	public static Identifier_Statement parse() {
 		// TODO Auto-generated method stub
-		return null;
+		Identifier_Statement2 identifier_Statement2 = new Identifier_Statement2();
+		Token t = TokenQueue.getToken();
+
+		if (t.type.equals(Token.LEFT_SQUARE_B)) {
+			t = TokenQueue.getToken();
+		} else {
+			System.out.println("Error : Expected " + t.type + " Type");
+			return null;
+		}
+		Expression exp = RuleSelector.select(t);
+		if (exp == null) {
+			return null;
+		} else {
+			identifier_Statement2.exp1 = exp;
+			t = TokenQueue.getToken();
+		}
+		if (t.type.equals(Token.RIGHT_SQUARE_B)) {
+			t = TokenQueue.getToken();
+		} else {
+			System.out.println("Error : Expected " + t.type + " Type");
+			return null;
+		}
+
+		if (t.type.equals(Token.EQUAL)) {
+			t = TokenQueue.getToken();
+		} else {
+			System.out.println("Error : Expected " + t.type + " Type");
+			return null;
+		}
+
+		exp = RuleSelector.select(t);
+		if (exp == null) {
+			return null;
+		} else {
+			identifier_Statement2.exp2 = exp;
+			t = TokenQueue.getToken();
+		}
+
+		if (t.type.equals(Token.SEMICOLON)) {
+			t = TokenQueue.getToken();
+		} else {
+			System.out.println("Error : Expected " + t.type + " Type");
+			return null;
+		}
+
+		return identifier_Statement2;
 	}
 
 }

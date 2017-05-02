@@ -3,8 +3,6 @@ package identifier_statement;
 import expression.Expression;
 import parser.Token;
 import parser.TokenQueue;
-import statement.RuleSelector;
-import statement.Statement;
 
 public class Identifier_Statement1 implements Identifier_Statement {
 
@@ -29,35 +27,29 @@ public class Identifier_Statement1 implements Identifier_Statement {
 		return result;
 	}
 
-	@Override
-	public Identifier_Statement parse() {
+	public static Identifier_Statement parse() {
 		// TODO Auto-generated method stub
 		Identifier_Statement1 identifier_Statement1 = new Identifier_Statement1();
-		Token t = TokenQueue.queue.get(TokenQueue.index);
+		Token t = TokenQueue.getToken();
+
 		if (t.type.equals(Token.EQUAL)) {
 			t = TokenQueue.queue.get(TokenQueue.index);
-			Expression expression = null;
-			// expression = RuleSelector.select(t);
-			// expression = expression.parse();
-			if (!expression.equals(null)) {
+			Expression exp = expression.RuleSelector.select(t);
+			if (exp != null) {
 				t = TokenQueue.queue.get(TokenQueue.index);
-
-				if (t.type.equals(Token.EXTENDS)) {
-					t = TokenQueue.queue.get(TokenQueue.index);
-
-				} else {
-
+				identifier_Statement1 = new Identifier_Statement1(exp);
+				if (!t.type.equals(Token.SEMICOLON)) {
+					System.out.println("Error : Expected " + t.type + " Type");
+					return null;
 				}
-
 			} else {
 				return null;
 			}
 
 		} else {
-			System.out.println("Expected = Symbol ");
+			System.out.println("Error : Expected " + t.type + " Type");
 			return null;
 		}
-
 		return identifier_Statement1;
 	}
 
