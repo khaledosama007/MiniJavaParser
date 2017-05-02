@@ -39,12 +39,12 @@ public class Identifier_Statement2 implements Identifier_Statement {
 		Token t = TokenQueue.getToken();
 
 		if (t.type.equals(Token.LEFT_SQUARE_B)) {
-			t = TokenQueue.getToken();
+			
 		} else {
 			System.out.println("Error : Expected " + t.type + " Type");
 			return null;
 		}
-		Expression exp = RuleSelector.select(t);
+		Expression exp = RuleSelector.select(TokenQueue.top());
 		if (exp == null) {
 			return null;
 		} else {
@@ -59,13 +59,13 @@ public class Identifier_Statement2 implements Identifier_Statement {
 		}
 
 		if (t.type.equals(Token.EQUAL)) {
-			t = TokenQueue.getToken();
+			//t = TokenQueue.getToken();
 		} else {
 			System.out.println("Error : Expected " + t.type + " Type");
 			return null;
 		}
 
-		exp = RuleSelector.select(t);
+		exp = RuleSelector.select(TokenQueue.top());
 		if (exp == null) {
 			return null;
 		} else {
@@ -74,7 +74,7 @@ public class Identifier_Statement2 implements Identifier_Statement {
 		}
 
 		if (t.type.equals(Token.SEMICOLON)) {
-			t = TokenQueue.getToken();
+			
 		} else {
 			System.out.println("Error : Expected " + t.type + " Type");
 			return null;

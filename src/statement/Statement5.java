@@ -33,10 +33,9 @@ public class Statement5 implements Statement {
 		// TODO Auto-generated method stub
 		Statement5 statement5 = new Statement5();
 		Token t = TokenQueue.getToken();
-
 		if (t.type.equals(Token.IDENTIFIER)) {
-			t = TokenQueue.getToken();
 			statement5.id = t.value;
+			//t = TokenQueue.getToken();
 		} else {
 			System.out.println("Error : Expected " + t.type + " Type");
 			return null;
@@ -46,9 +45,10 @@ public class Statement5 implements Statement {
 			return null;
 		} else {
 			statement5.identifier_statement1 = identifier_Statement2;
-			t = TokenQueue.getToken();
+//			System.out.println("XYZ"+t.type);
+//			t = TokenQueue.getToken();
 		}
-
+		
 		return statement5;
 	}
 

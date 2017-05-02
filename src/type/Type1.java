@@ -40,7 +40,6 @@ public class Type1 implements Type {
 		Token c = TokenQueue.getToken();
 		if(RegularType.isRegular(c.value)){
 			type.regularType = c.value;
-			
 			return type;
 		}
 		else {

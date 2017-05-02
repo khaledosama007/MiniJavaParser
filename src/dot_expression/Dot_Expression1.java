@@ -13,10 +13,9 @@ public class Dot_Expression1  implements Dot_Expression {
 	
 	public static Dot_Expression parse () {
 		Dot_Expression dot_Expression = new Dot_Expression1 () ;
-		Token t = TokenQueue.queue.get(TokenQueue.index); 
-		TokenQueue.index++ ;
+		Token t = TokenQueue.getToken() ;
 		if (t.type.equals(Token.LENGTH)) {
-			TokenQueue.index++ ;
+			
 		}else{
 			System.out.println("Sentax error \"length\" not found");
 			return null ;

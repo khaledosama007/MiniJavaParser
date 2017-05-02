@@ -32,27 +32,30 @@ public class Statement4 implements Statement {
 		// TODO Auto-generated method stub
 		Statement4 statement4 = new Statement4();
 		Token t = TokenQueue.getToken();
-
+		
 		if (t.type.equals(Token.SOP)) {
 			t = TokenQueue.getToken();
 		} else {
 			System.out.println("Error : Expected " + t.type + " Type");
 			return null;
 		}
+		
 		if (t.type.equals(Token.LEFT_ROUND_B)) {
-			t = TokenQueue.getToken();
+			//t = TokenQueue.getToken();
+			
 		} else {
 			System.out.println("Error : Expected " + t.type + " Type");
 			return null;
 		}
-		Expression exp = RuleSelector.select(t);
+		Expression exp = RuleSelector.select(TokenQueue.top());
 		if (exp == null) {
 			return null;
 		} else {
+			
 			statement4.exp = exp;
 			t = TokenQueue.getToken();
 		}
-
+		
 		if (t.type.equals(Token.RIGHT_ROUND_B)) {
 			t = TokenQueue.getToken();
 		} else {
@@ -61,7 +64,7 @@ public class Statement4 implements Statement {
 		}
 
 		if (t.type.equals(Token.SEMICOLON)) {
-			t = TokenQueue.getToken();
+			//t = TokenQueue.getToken();
 		} else {
 			System.out.println("Error : Expected " + t.type + " Type");
 			return null;

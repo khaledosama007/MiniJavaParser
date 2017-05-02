@@ -100,15 +100,17 @@ public class MainClass1 implements MainClass {
 														t = TokenQueue.getToken();
 														if (t.type.equals(Token.RIGHT_ROUND_B)) {
 															t = TokenQueue.getToken();
+															
 															if (t.type.equals(Token.LEFT_CURLY_B)) {
-																t = TokenQueue.getToken();
+																
 																Statement statement = RuleSelector.select();
-																// statement.parse();
-																// TokenQueue.index++;
-
+																t=TokenQueue.getToken();
+																
 																if (t.type.equals(Token.RIGHT_CURLY_B)) {
 																	t = TokenQueue.getToken();
+																	System.out.println("Mina"+t.type);
 																	if (t.type.equals(Token.RIGHT_CURLY_B)) {
+																		//t = TokenQueue.getToken();
 																		main_class.setSt(statement);
 																		return main_class;
 																	} else {
@@ -188,7 +190,7 @@ public class MainClass1 implements MainClass {
 		String result = new String("");
 		result += classString + " " + this.id + " " + leftB + publicString + " " + staticString + " " + voidString + " "
 				+ mainString + " " + leftR + StringS + leftS + rightS + id2 + rightB + leftB2 +
-				// st.getValue()
+				st.getValue()+
 				rightB2 + rightB3;
 		return result;
 	}

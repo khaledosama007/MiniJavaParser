@@ -8,11 +8,11 @@ public class TypeSelector {
 	
 	public static Type select(){
 	Token t1 =TokenQueue.top();
-	if(TokenQueue.queue.get(TokenQueue.index+1).type.equals(Token.LEFT_SQUARE_B)){
+	if(TokenQueue.queue.get(TokenQueue.index+1).type.equals((Token.LEFT_SQUARE_B))){
 		 
 		return new Type2();
 	}
-	else if(TokenQueue.queue.get(TokenQueue.index+1).type.equals(Token.IDENTIFIER)) {
+	else if(TokenQueue.queue.get(TokenQueue.index+1).type.equals((Token.IDENTIFIER))) {
 		
 		//TokenQueue.index++;
 		return new Type1();

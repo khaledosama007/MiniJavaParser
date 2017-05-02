@@ -157,9 +157,18 @@ public class Main {
 		q.add(new Token("IDENTIFIER" , "a"));
 		q.add(new Token("RIGHT_ROUND_B" , ")"));
 		q.add(new Token("LEFT_CURLY_B" , "{"));
+		q.add(new Token("LEFT_CURLY_B" , "{"));
 		//q.add(new Token("INT" , "int"));
-		//q.add(new Token("IDENTIFIER" , "x"));
-		//q.add(new Token("SEMICOLON" , ";"));
+		q.add(new Token("IDENTIFIER" , "x"));
+		q.add(new Token("EQUAL" , "="));
+		q.add(new Token("INTEGER_LITERAL" , "5"));
+		q.add(new Token("SEMICOLON" , ";"));
+		q.add(new Token("SOP", "System.out.println"));
+		q.add(new Token("LEFT_ROUND_B" , "("));
+		q.add(new Token("INTEGER_LITERAL" , "5"));
+		q.add(new Token("RIGHT_ROUND_B" , ")"));
+		q.add(new Token("SEMICOLON" , ";"));
+		q.add(new Token("RIGHT_CURLY_B" , "}"));
 		q.add(new Token("RIGHT_CURLY_B" , "}"));
 		q.add(new Token("RIGHT_CURLY_B" , "}"));
 		
@@ -168,19 +177,23 @@ public class Main {
 		q.add(new Token("EXTENDS" , "extends"));
 		q.add(new Token("IDENTIFIER" , "MyCC"));
 		q.add(new Token("LEFT_CURLY_B" , "{"));
-//		q.add(new Token("PUBLIC" , "public"));
-//		q.add(new Token("INT" , "int"));
-//		q.add(new Token("IDENTIFIER" , "ComputeFac"));
-//		q.add(new Token("LEFT_ROUND_B" , "("));
-//		q.add(new Token("STRING" , "String"));
-//		q.add(new Token("IDENTIFIER" , "x"));
-//		q.add(new Token("RIGHT_ROUND_B" , ")"));
-//		q.add(new Token("LEFT_CURLY_B" , "{"));
+		q.add(new Token("PUBLIC" , "public"));
+		q.add(new Token("INT" , "int"));
+		q.add(new Token("IDENTIFIER" , "ComputeFac"));
+		q.add(new Token("LEFT_ROUND_B" , "("));
+		q.add(new Token("STRING" , "String"));
+		q.add(new Token("IDENTIFIER" , "x"));
+		q.add(new Token("RIGHT_ROUND_B" , ")"));
+		q.add(new Token("LEFT_CURLY_B" , "{"));
 		q.add(new Token("INT" , "int"));
 		q.add(new Token("LEFT_SQUARE_B" , "["));
 		q.add(new Token("RIGHT_SQUARE_B" , "]"));
 		q.add(new Token("IDENTIFIER" , "x"));
 		q.add(new Token("SEMICOLON" , ";"));
+		q.add(new Token("RETURN" , "return"));
+		q.add(new Token("IDENTIFIER" , "x"));
+		q.add(new Token("SEMICOLON" , ";"));
+		q.add(new Token("RIGHT_CURLY_B" , "}"));
 		q.add(new Token("RIGHT_CURLY_B" , "}"));
 		//q.add(new Token("RETURN" , "return"));
 		t.queue = q;
@@ -192,11 +205,11 @@ public class Main {
 //		JFrame frame = new JFrame("Tree");
 //		frame.add(tree);
 //		frame.setVisible(true);
-		TreeNodeVisitor visitor = new TreeNodeVisitor();
+		//TreeNodeVisitor visitor = new TreeNodeVisitor();
 		//visitor.visit(g);
-		g.accept(visitor);
-		visitor.showTree();
-		//System.out.println(g.getValue());
+		//g.accept(visitor);
+		//visitor.showTree();
+		System.out.println(g.getValue());
 		//Goal g = p.parse();
 		//System.out.println(g.getValue());*/
 

@@ -40,19 +40,19 @@ public class Expression_Alpha1 implements Expression_Alpha {
 		Token t = TokenQueue.getToken() ;
 		if (t.type.equals(Token.PLUS) || t.type.equals(Token.MINUS) || t.type.equals(Token.MULTIPLY) || t.type.equals(Token.GREATERTHAN) || t.type.equals(Token.AND)) {
 			alpha1.binaryOp = t.value ;
-			t = TokenQueue.getToken() ;
+			//t = TokenQueue.getToken() ;
 		}else {
 			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;
 		}
-		Expression exp = RuleSelector.select(t) ;
+		Expression exp = RuleSelector.select(TokenQueue.top()) ;
 		if (exp == null ) {
 			return null ;
 		}else {
 			alpha1.exp = exp ;
-			t = TokenQueue.getToken() ;
+			//t = TokenQueue.getToken() ;
 		}
-		Expression_Alpha alpha = expression_alpha.RuleSelector.select(t) ;
+		Expression_Alpha alpha = expression_alpha.RuleSelector.select(TokenQueue.top()) ;
 		if (alpha == null ) {
 			return null ;
 		}else {

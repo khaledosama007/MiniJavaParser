@@ -38,12 +38,12 @@ public class Expression_Alpha2 implements Expression_Alpha {
 		Expression_Alpha2 alpha1 = new Expression_Alpha2() ;
 		Token t = TokenQueue.getToken() ;
 		if (t.type.equals(Token.LEFT_SQUARE_B)) {
-			t = TokenQueue.getToken() ;
+			//t = TokenQueue.getToken() ;
 		}else {
 			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;
 		}
-		Expression exp = RuleSelector.select(t) ;
+		Expression exp = RuleSelector.select(TokenQueue.top()) ;
 		if (exp == null ) {
 			return null ;
 		}else {
@@ -51,12 +51,12 @@ public class Expression_Alpha2 implements Expression_Alpha {
 			t = TokenQueue.getToken() ;
 		}
 		if (t.type.equals(Token.RIGHT_SQUARE_B)) {
-			t = TokenQueue.getToken() ;
+			//t = TokenQueue.getToken() ;
 		}else {
 			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;
 		}
-		Expression_Alpha alpha = expression_alpha.RuleSelector.select(t) ;
+		Expression_Alpha alpha = expression_alpha.RuleSelector.select(TokenQueue.top()) ;
 		if (alpha == null ) {
 			return null ;
 		}else {

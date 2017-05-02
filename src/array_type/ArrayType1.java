@@ -39,11 +39,9 @@ public class ArrayType1 implements ArrayType {
 	public ArrayType1 parse(){
 		ArrayType1 arr = new ArrayType1();
 		Token name = TokenQueue.getToken();
-		System.out.println("SS"+name.type);
 		if(RegularType.isRegular(name.value)){
 			arr.regularType = name.value;
 			 name = TokenQueue.getToken();
-			 
 			 if(name.type.equals(Token.LEFT_SQUARE_B)){
 				 name = TokenQueue.getToken();
 				 if(name.type.equals(Token.RIGHT_SQUARE_B)){

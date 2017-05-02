@@ -34,20 +34,20 @@ public class Expression6 implements Expression {
 		Token t = TokenQueue.getToken() ;
 		
 		if (t.type.equals(Token.NEW)) {
-			t = TokenQueue.getToken() ;
+			//t = TokenQueue.getToken() ;
 		}else {
 			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;
 		}
-		New_Expression exp = new_expression.RuleSelector.select(t) ;
+		New_Expression exp = new_expression.RuleSelector.select(TokenQueue.top()) ;
 		if (exp == null ) {
 			return null ;
 		}else {
 			expression6.exp = exp ;
-			t = TokenQueue.getToken() ;
+			//t = TokenQueue.getToken() ;
 		}
 		
-		Expression_Alpha alpha = expression_alpha.RuleSelector.select(t) ;
+		Expression_Alpha alpha = expression_alpha.RuleSelector.select(TokenQueue.top()) ;
 		if (alpha == null ) {
 			return null ;
 		}else {

@@ -53,22 +53,20 @@ public class Dot_Expression2  implements Dot_Expression {
 		Token t = TokenQueue.getToken() ;
 		if (t.type.equals(Token.IDENTIFIER)) {
 			dot_Expression.id = t.value ;
-			t = TokenQueue.queue.get(TokenQueue.index);
-			TokenQueue.index++ ;
+			t = TokenQueue.getToken();
 		}else{
 			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;
 		}
 		if (t.type.equals(Token.LEFT_ROUND_B)) {
-			t = TokenQueue.queue.get(TokenQueue.index);
-			TokenQueue.index++ ;
+			t = TokenQueue.getToken() ;
 		}
 		else {
 			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;
 		}
 		if (t.type.equals(Token.RIGHT_ROUND_B)) {
-			t = TokenQueue.getToken() ;
+			//t = TokenQueue.getToken() ;
 		}
 		else {
 			do {

@@ -37,16 +37,20 @@ public class Expression1 implements Expression  {
 		
 		if (t.type.equals(Token.INTEGER_LITERAL)) {
 			expression1.num = t.value ;
-			t = TokenQueue.getToken() ;
+			
+			
 		}else {
 			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;
 		}
-		Expression_Alpha alpha = expression_alpha.RuleSelector.select(t) ;
+		Expression_Alpha alpha = expression_alpha.RuleSelector.select(TokenQueue.top()) ;
 		if (alpha == null ) {
 			return null ;
 		}else {
+			
+
 			expression1.exp = alpha ;
+			//System.out.println("select"+TokenQueue.top().value);
 		}
 		return expression1 ;
 	}

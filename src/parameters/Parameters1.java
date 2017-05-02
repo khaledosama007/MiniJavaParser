@@ -47,22 +47,23 @@ public class Parameters1 implements Parameter {
 		Parameters1 returnParam = new Parameters1();
 		Type localType ;
 		String localId;
-		
+		Token current ;
 		do{
 			localType = TypeSelector.select();
-			Token current = TokenQueue.queue.get(TokenQueue.index);
+			localType = localType.parse();
+			 current = TokenQueue.getToken();
 		if(current.type.equals(Token.IDENTIFIER)){
 			localId = current.value;
-			TokenQueue.index++;
 			returnParam.id.add(localId);
 			returnParam.type.add(localType);
+			//current = TokenQueue.getToken();
 		}
 		else {
 			System.out.println("Error expected "+current.type+" Type");
 			return null;
 		}
-		}while(RegularType.isRegular(TokenQueue.queue.get(TokenQueue.index).value));
-		return null;
+		}while(RegularType.isRegular(TokenQueue.top().value));
+		return returnParam;
 		
 	}
 	@Override

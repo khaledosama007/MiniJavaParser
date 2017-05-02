@@ -55,6 +55,7 @@ public class ClassDeclaration1 implements ClassDeclaration {
 		ClassDeclaration1 cd = new ClassDeclaration1();
 		Token current = TokenQueue.getToken();
 		if (current.type.equals(Token.CLASS)) {
+			
 			current = TokenQueue.getToken();
 			if (current.type.equals(Token.IDENTIFIER)) {
 				cd.id1=current.value;
@@ -78,7 +79,6 @@ public class ClassDeclaration1 implements ClassDeclaration {
 	private static ClassDeclaration handleExtend(ClassDeclaration1 cd, Token current) {
 		ArrayList<Declaration> returnDeclaration = new ArrayList<>();
 		current = TokenQueue.getToken();
-		System.out.println(current.type);
 		if (current.type.equals(Token.EXTENDS)) {
 			current = TokenQueue.getToken();
 			if (current.type.equals(Token.IDENTIFIER)) {
@@ -88,6 +88,7 @@ public class ClassDeclaration1 implements ClassDeclaration {
 					cd.declartion = callDeclaration(current);
 					current = TokenQueue.getToken();
 					if (current.type.equals(Token.RIGHT_CURLY_B)) {
+						
 							return cd;
 					}
 					else {
@@ -133,15 +134,16 @@ public class ClassDeclaration1 implements ClassDeclaration {
 
 	public static ArrayList<Declaration> callDeclaration(Token current) {
 		ArrayList<Declaration> decs = new ArrayList<>();
-		current = TokenQueue.top();
-		while (RegularType.isRegular(current.value) || current.type.equals(Token.PUBLIC) ||
-				current.type.equals(Token.PRIVATE))
+		//current = TokenQueue.getToken();
+		while (RegularType.isRegular(TokenQueue.top().value) || TokenQueue.top().type.equals(Token.PUBLIC) ||
+				TokenQueue.top().equals(Token.PRIVATE))
 		 {
 			Declaration tempD = RuleSelector.select();
 			tempD = tempD.parse();
 			decs.add(tempD);
-			current = TokenQueue.top();
+			//current = TokenQueue.getToken();
 		} 
+		
 		return decs;
 	}
 	@Override

@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class Token {
 	public static final String CLASS = "CLASS";
-	public static final String SOP = "System.out.println";
+	public static final String SOP = "SOP";
 	public static final String IDENTIFIER  = "IDENTIFIER";
 	public static final String  LEFT_CURLY_B = "LEFT_CURLY_B";
 	public static final String  RIGHT_CURLY_B = "RIGHT_CURLY_B";

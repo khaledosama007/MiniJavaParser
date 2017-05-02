@@ -31,16 +31,22 @@ public class Identifier_Statement1 implements Identifier_Statement {
 		// TODO Auto-generated method stub
 		Identifier_Statement1 identifier_Statement1 = new Identifier_Statement1();
 		Token t = TokenQueue.getToken();
-
 		if (t.type.equals(Token.EQUAL)) {
-			t = TokenQueue.queue.get(TokenQueue.index);
-			Expression exp = expression.RuleSelector.select(t);
+			Expression exp = expression.RuleSelector.select(TokenQueue.top());
+			
 			if (exp != null) {
-				t = TokenQueue.queue.get(TokenQueue.index);
+				
+				t = TokenQueue.getToken();
+				
+				
 				identifier_Statement1 = new Identifier_Statement1(exp);
 				if (!t.type.equals(Token.SEMICOLON)) {
-					System.out.println("Error : Expected " + t.type + " Type");
+					
 					return null;
+				}
+				else{
+					System.out.println("select"+t.value);
+					return identifier_Statement1;
 				}
 			} else {
 				return null;
@@ -50,7 +56,7 @@ public class Identifier_Statement1 implements Identifier_Statement {
 			System.out.println("Error : Expected " + t.type + " Type");
 			return null;
 		}
-		return identifier_Statement1;
+		//return identifier_Statement1;
 	}
 
 }

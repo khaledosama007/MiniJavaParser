@@ -45,7 +45,6 @@ public class VarDeclaration1 implements VarDeclaration {
 		type = type.parse();
 		Token idToken = TokenQueue.getToken();
 		if(idToken.type.equals(Token.IDENTIFIER)){
-			
 			var.id =idToken.value; 
 			var.type = type;
 			idToken = TokenQueue.getToken();

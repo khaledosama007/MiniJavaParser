@@ -55,12 +55,12 @@ public class Statement2 implements Statement {
 			return null;
 		}
 		if (t.type.equals(Token.LEFT_ROUND_B)) {
-			t = TokenQueue.getToken();
+			//t = TokenQueue.getToken();
 		} else {
 			System.out.println("Error : Expected " + t.type + " Type");
 			return null;
 		}
-		Expression exp = RuleSelector.select(t);
+		Expression exp = RuleSelector.select(TokenQueue.top());
 		if (exp == null) {
 			return null;
 		} else {
@@ -69,7 +69,7 @@ public class Statement2 implements Statement {
 		}
 
 		if (t.type.equals(Token.RIGHT_ROUND_B)) {
-			t = TokenQueue.getToken();
+			//t = TokenQueue.getToken();
 		} else {
 			System.out.println("Error : Expected " + t.type + " Type");
 			return null;
@@ -83,17 +83,18 @@ public class Statement2 implements Statement {
 			t = TokenQueue.getToken();
 		}
 		if (t.type.equals(Token.ELSE)) {
-			t = TokenQueue.getToken();
+			//t = TokenQueue.getToken();
 		} else {
-			System.out.println("Error : Expected " + t.type + " Type");
-			return null;
+			statement2.state2 = null;
+			TokenQueue.index = TokenQueue.index - 1;
+			return statement2;
 		}
 		stat = statement.RuleSelector.select();
 		if (stat == null) {
 			return null;
 		} else {
 			statement2.state2 = stat;
-			t = TokenQueue.getToken();
+			//t = TokenQueue.getToken();
 		}
 
 		// TODO Auto-generated method stub

@@ -33,7 +33,6 @@ public class Type2 implements Type {
 		ArrayType1 typeArr = new ArrayType1();
 		typeArr = typeArr.parse();
 		type.arrayType = typeArr;
-		//TokenQueue.index++;
 		return type;
 	}
 	@Override

@@ -34,12 +34,12 @@ public class New_Expression1 implements New_Expression {
 			return null ;
 		}
 		if (t.type.equals(Token.LEFT_SQUARE_B)) {
-			t=TokenQueue.getToken() ;
+			//t=TokenQueue.getToken() ;
 		}else {
 			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;
 		}
-		Expression exp = RuleSelector.select(t) ;
+		Expression exp = RuleSelector.select(TokenQueue.top()) ;
 		if (exp == null ) {
 			return null ;
 		}else {
@@ -47,7 +47,7 @@ public class New_Expression1 implements New_Expression {
 			t = TokenQueue.getToken() ;
 		}
 		if (t.type.equals(Token.RIGHT_SQUARE_B)) {
-			t = TokenQueue.getToken() ;
+			//t = TokenQueue.getToken() ;
 		}else {
 			System.out.println("Error : Expected "+t.type+" Type");
 			return null ;

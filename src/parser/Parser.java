@@ -20,7 +20,7 @@ public class Parser {
 		main = main.parse();
 		ArrayList<ClassDeclaration> classDeclars = new ArrayList<>();
 		if (TokenQueue.index < TokenQueue.queue.size()) {
-
+			
 			while (TokenQueue.queue.get(TokenQueue.index).type.equals(Token.CLASS)) {
 				ClassDeclaration1 cd = new ClassDeclaration1();
 				cd = cd.parse();
