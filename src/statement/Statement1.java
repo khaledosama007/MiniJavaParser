@@ -2,6 +2,9 @@ package statement;
 
 import java.util.ArrayList;
 
+import parser.Token;
+import parser.TokenQueue;
+
 public class Statement1 implements Statement {
 	ArrayList<Statement> statements;
 
@@ -25,6 +28,33 @@ public class Statement1 implements Statement {
 		result += " }";
 
 		return result;
+	}
+
+	public static Statement parse() {
+		Statement1 statement1 = new Statement1();
+
+		Token t = TokenQueue.getToken();
+
+		if (t.type.equals(Token.LEFT_CURLY_B)) {
+			t = TokenQueue.getToken();
+		} else {
+			System.out.println("Error : Expected " + t.type + " Type");
+			return null;
+		}
+		Statement s = statement.RuleSelector.select();
+
+		while (s != null) {
+			statement1.statements.add(s);
+			s = statement.RuleSelector.select();
+		}
+		if (t.type.equals(Token.RIGHT_CURLY_B)) {
+			t = TokenQueue.getToken();
+		} else {
+			System.out.println("Error : Expected " + t.type + " Type");
+			return null;
+		}
+
+		return statement1;
 	}
 
 }
