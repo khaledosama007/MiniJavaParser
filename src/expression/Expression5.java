@@ -7,7 +7,7 @@ import gui_module.Visitor;
 
 public class Expression5 implements Expression {
 
-	Expression_Alpha exp ;
+	public Expression_Alpha exp ;
 	
 	public Expression5(Expression_Alpha exp) {
 		super();

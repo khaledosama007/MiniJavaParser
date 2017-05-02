@@ -2,12 +2,13 @@ package statement;
 
 import expression.Expression;
 import expression.RuleSelector;
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 
 public class Statement4 implements Statement {
 	// "System.out.println" "(" Expression ")" ";"
-	Expression exp;
+	public Expression exp;
 
 	public Statement4(Expression exp) {
 		super();
@@ -68,6 +69,12 @@ public class Statement4 implements Statement {
 		}
 
 		return statement4;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
+		
 	}
 
 }

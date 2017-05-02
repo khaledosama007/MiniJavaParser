@@ -2,14 +2,15 @@ package statement;
 
 import expression.Expression;
 import expression.RuleSelector;
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 
 public class Statement2 implements Statement {
 	// "if" "(" Expression ")" Statement ("else" Statement)
-	Expression exp1;
-	Statement state1;
-	Statement state2;
+	public Expression exp1;
+	public Statement state1;
+	public Statement state2;
 
 	public Statement2(Expression exp1, Statement state1, Statement state2) {
 		super();
@@ -100,4 +101,10 @@ public class Statement2 implements Statement {
 		return statement2;
 	}
 
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
+		
+	}
 }

@@ -1,13 +1,14 @@
 package statement;
 
+import gui_module.Visitor;
 import identifier_statement.Identifier_Statement;
 import parser.Token;
 import parser.TokenQueue;
 
 public class Statement5 implements Statement {
 	// Identifier Identifier_Statement
-	String id;
-	Identifier_Statement identifier_statement1;
+	public String id;
+	public Identifier_Statement identifier_statement1;
 
 	public Statement5() {
 
@@ -50,6 +51,12 @@ public class Statement5 implements Statement {
 		}
 
 		return statement5;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
+		
 	}
 
 }

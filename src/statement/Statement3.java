@@ -2,13 +2,14 @@ package statement;
 
 import expression.Expression;
 import expression.RuleSelector;
+import gui_module.Visitor;
 import parser.Token;
 import parser.TokenQueue;
 
 public class Statement3 implements Statement {
 	// "while" "(" Expression ")" Statement
-	Expression exp1;
-	Statement state1;
+	public Expression exp1;
+	public Statement state1;
 
 	public Statement3(Expression exp1, Statement state1) {
 		super();
@@ -71,6 +72,12 @@ public class Statement3 implements Statement {
 		}
 
 		return statement3;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this) ;
+		
 	}
 
 }

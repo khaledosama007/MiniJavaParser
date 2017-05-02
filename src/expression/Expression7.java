@@ -8,8 +8,8 @@ import gui_module.Visitor;
 
 public class Expression7 implements Expression {
 
-	Expression_Alpha exp_alpha ;
-	Expression exp ;
+	public Expression_Alpha exp_alpha ;
+	public Expression exp ;
 	
 	
 	

@@ -7,8 +7,8 @@ import gui_module.Visitor;
 
 public class Expression1 implements Expression  {
 
-	String num ;
-	Expression_Alpha exp ;
+	public String num ;
+	public Expression_Alpha exp ;
 	
 	
 	

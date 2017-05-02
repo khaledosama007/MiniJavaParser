@@ -9,8 +9,8 @@ import dot_expression.RuleSelector;
 
 public class Expression_Alpha3 implements Expression_Alpha{
 	
-	Dot_Expression exp ;
-	Expression_Alpha exp_alpha ;
+	public Dot_Expression exp ;
+	public Expression_Alpha exp_alpha ;
 
 
 

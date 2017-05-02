@@ -8,7 +8,7 @@ import gui_module.Visitor;
 
 public class New_Expression2 implements New_Expression {
 
-	String id ;
+	public String id ;
 	
 	public New_Expression2(String id) {
 		super();

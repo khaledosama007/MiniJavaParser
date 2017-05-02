@@ -8,9 +8,9 @@ import gui_module.Visitor;
 
 public class Expression_Alpha1 implements Expression_Alpha {
 
-	Expression_Alpha exp_alpha ;
-	Expression exp ;
-	String binaryOp ;
+	public Expression_Alpha exp_alpha ;
+	public Expression exp ;
+	public String binaryOp ;
 	
 	
 	
