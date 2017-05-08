@@ -10,6 +10,8 @@
 < LEFT_SQUARE_B > : -[-
 < RIGHT_SQUARE_B > : -]-
 < IDENTIFIER > : -a-
+< IDENTIFIER > : -b-
+< IDENTIFIER > : -c-
 < RIGHT_ROUND_B > : -)-
 < LEFT_CURLY_B > : -{-
 < SOP > : -System.out.println-

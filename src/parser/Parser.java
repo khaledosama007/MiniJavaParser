@@ -18,12 +18,19 @@ public class Parser {
 		// Token t = TokenQueue.queue.poll();
 		MainClass1 main = new MainClass1();
 		main = main.parse();
+		if(main == null){
+			System.out.println("Error Expected Type Main Class");
+			return null;
+		}
 		ArrayList<ClassDeclaration> classDeclars = new ArrayList<>();
 		if (TokenQueue.index < TokenQueue.queue.size()) {
 			
 			while (TokenQueue.queue.get(TokenQueue.index).type.equals(Token.CLASS)) {
 				ClassDeclaration1 cd = new ClassDeclaration1();
 				cd = cd.parse();
+				if(cd == null){
+					System.out.println("Expected Type Class");
+				}
 				classDeclars.add(cd);
 				if (TokenQueue.index >= TokenQueue.queue.size()) {
 					break;

@@ -200,16 +200,14 @@ public class Main {
 		t.queue = inputArrayList;
 		Parser p = new Parser();
 		Goal g = p.parse();
-//		DefaultMutableTreeNode root = new DefaultMutableTreeNode("ROOT");
-//		JTree tree = new JTree(root);
-//		//tree.add(root);
-//		JFrame frame = new JFrame("Tree");
-//		frame.add(tree);
-//		frame.setVisible(true);
 		TreeNodeVisitor visitor = new TreeNodeVisitor();
-		g.accept(visitor);
+		if( g == null){
+			System.out.println("No object to Draw tree for");
+		}
+		else {g.accept(visitor);
 		visitor.showTree();
-		System.out.println(g.getValue());
+		System.out.println(g.getValue());}
+		
 
 	}
 	
